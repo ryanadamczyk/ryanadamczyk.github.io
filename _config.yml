@@ -76,7 +76,7 @@ theme_mode: # [light|dark]
 img_cdn:
 
 # the avatar on sidebar, support local or CORS resources
-avatar: https://imgur.com/Kjfcysa
+avatar: {% avatar [ryanadamczyk] %}
 
 # boolean type, the global switch for TOC in posts.
 toc: true
@@ -193,3 +193,6 @@ jekyll-archives:
   permalinks:
     tag: /tags/:name/
     category: /categories/:name/
+
+plugins:
+  - jekyll-avatar

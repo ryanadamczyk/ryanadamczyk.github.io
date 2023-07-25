@@ -27,5 +27,6 @@ if RUBY_PLATFORM =~ /linux-musl/
   gem "jekyll-sass-converter", "~> 2.0"
 end
 
-#Import Jekyll::Compose
+#Import Jekyll::Compose and Avatar
 gem 'jekyll-compose', group: [:jekyll_plugins]
+gem 'jekyll-avatar'
