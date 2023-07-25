@@ -4,10 +4,21 @@ icon: fas fa-info-circle
 order: 4
 ---
 
-# Work Experience
+![Hero image](/assets/img/headers/cli-header.webp)
 
-# Education
+#  👋  Greetings!
 
-# HomeLab Projects
+My name is Ryan Adamczyk, and I'm presently pursuing my Masters while working as an IT Specialist at Florida Atlantic University. I currently hold a Bachelors of Business Administration in Management Information Systems with a concentration in Business Analytics. 
 
-# Hobbies and Interests
+I am a HomeLab enthusiast who is constantly tinkering to learn more about my areas of interest. 
+
+At 22 years old, I am an aspiring technology professional eager to make a significant entrance into the IT field, with a keen interest in roles such as Systems Administrator or equivalent.
+
+# 🔥 Hobbies and Interests
+
+In case you are interested here are some of my favorite hobbies and interests currently:
+
+- Running
+- Biking
+- Cryptocurrency/Blockchain Technology
+- Video Games (.zex0 on discord if you want to play)
