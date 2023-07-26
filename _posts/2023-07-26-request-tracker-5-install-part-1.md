@@ -2,6 +2,10 @@
 layout: post
 title: RT5 Installation Part 1 - Dependencies and Database
 date: 2023-07-26 15:40 +0000
+categories: linux self-hosted
+tags: requesttracker centos rhel linux mysql
+image:
+    path: /assets/img/headers/rt5-header.webp
 ---
 
 # Request Tracker
