@@ -14,9 +14,9 @@ to keep track of what needs to get done, who is working on which tasks,
 what's already been done, and when tasks were (or weren't) completed.
 
 # Background
-I work for Florida Atlantic University and was given a project to upgrade our Request Tracker software. Previously we were running RT 4.4.1 on a CentOS 7 virtual machine. I upgraded us to RT 5.0.4 running on a CentOS 9 VM. Throughout this process documentation on the internet was very slim, therefore I documented all steps I took to provide a guide for others in the future who wish to do a similar install.
+I work for Florida Atlantic University and was given a project to upgrade our Request Tracker software. Previously we were running RT 4.4.1 on a CentOS Stream 7 virtual machine. I upgraded us to RT 5.0.4 running on a CentOS Stream 9 VM. Throughout this process documentation on the internet was very slim, therefore I documented all steps I took to provide a guide for others in the future who wish to do a similar install.
 
-For the purposes of this tutorial I will be assuming that you are running CentOS 9, or a similar RHEL distribution. 
+For the purposes of this tutorial I will be assuming that you are running CentOS Stream 9, or a similar RHEL distribution. 
 
 I will also be splitting the tutorial into three parts:
 1. Dependencies and Database
@@ -111,5 +111,4 @@ After editing and saving the my.cnf configuration file you must restart the MySQ
 ```bash
 sudo systemctl restart mysqld
 ```
-
 This completes part 1 of the tutorial, in the next section we will install and configure Request Tracker.
