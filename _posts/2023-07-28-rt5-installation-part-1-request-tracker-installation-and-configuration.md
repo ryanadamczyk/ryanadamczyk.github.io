@@ -61,13 +61,11 @@ gunzip -c rt-olddatabase-name.sql.gz | mysql -uroot -p rt5
 This will take a while to run, after it is finished run these commands to check that it worked:
 ```bash
 mysql -uroot -p
-```
-```SQL
+
 show databases;
 use rt5;
 show tables;
-```
-```SQL
+
 SELECT 
 table_name AS `Table`, 
 	round(((data_length + index_length) / 1024 / 1024), 2) `Size in MB` 
