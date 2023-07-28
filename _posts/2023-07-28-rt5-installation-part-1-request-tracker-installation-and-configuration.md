@@ -19,7 +19,9 @@ Previously we learned how to update our OS, install and configure our database, 
 After this tutorial we will have a working installation of Request Tracker 5.0.4 with MySQL 5.7 with InnoDB support. In the last step of this tutorial we will install and configure our web and mail server:
 
 **1. Dependencies and Database**
+
 **2.Request Tracker Installation and Configuration**
+
 3.Web and Mail Server Configuration
 
 # Download and install RT5
