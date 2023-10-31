@@ -53,3 +53,5 @@ The publication outlines 14 families of security requirements that aim to secure
 7. Repeat steps 3 through 6 as needed
 
 ## Fresh Ubuntu 20.04 LTS Installation
+1. Install Ubuntu 20.04 via DVD, ISO, or USB
+![ubuntu_install_1](/assets/img/posts/ubuntu_install_1.webp)
