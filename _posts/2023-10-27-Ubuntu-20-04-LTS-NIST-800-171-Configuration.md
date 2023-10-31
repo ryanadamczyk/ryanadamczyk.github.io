@@ -8,12 +8,12 @@ image:
     path: /assets/img/headers/nist-header.webp
 ---
 
-NIST 800-171
+# NIST 800-171
 NIST Special Publication 800-171, titled "Protecting Controlled Unclassified Information in Non-Federal Systems and Organizations," is a document published by the National Institute of Standards and Technology (NIST), aimed at standardizing the way non-federal entities protect sensitive but unclassified information. 
 
 The publication outlines 14 families of security requirements that aim to secure Controlled Unclassified Information (CUI) when it is stored, processed, or transmitted by non-federal systems and organizations.
 
-#14 Families of Security Requirements
+## 14 Families of Security Requirements
 - Access Control
     - Restricting access to CUI through the enforcement of access permissions.
 - Awareness and Training
@@ -43,7 +43,7 @@ The publication outlines 14 families of security requirements that aim to secure
 - System and Information Integrity
     - Identifying, reporting, and correcting information and information system flaws in a timely manner.
 
-#Overview of the Build Steps
+## Overview of the Build Steps
 1. Install fresh Ubuntu 20.04 LTS system
 2. Preconfigure the system for compliance
 3. Run SCAP agent against OS
@@ -52,13 +52,14 @@ The publication outlines 14 families of security requirements that aim to secure
 6. Fix the non-compliant issues
 7. Repeat steps 3 through 6 as needed
 
-#Fresh Ubuntu 20.04 LTS Installation
+## Fresh Ubuntu 20.04 LTS Installation
 1. Install Ubuntu 20.04 via DVD, ISO, or USB
 ![ubuntu_install_1](/assets/img/posts/ubuntu_install_1.webp)
 ![ubuntu_install_2](/assets/img/posts/ubuntu_install_2.webp)
 2. If an internet connection is available, choose **Download updates while installing Ubuntu**. Also choose **Install third-party software for graphics...** if specialized drivers are needed for hardware.
 ![ubuntu_install_3](/assets/img/posts/ubuntu_install_3.webp)
 3. If there is only one drive in the system, use the default setting to configure the drive and choose **Advanced Features** to enable LVM with encryption. Otherwise, configure the partitions and encrypted volumes under **Something Else**.
+
 ![ubuntu_install_4](/assets/img/posts/ubuntu_install_4.webp)
 4. In the LVM/Encryption screen, enter a very long complex password that will be used to encrypt the drive. The password should be at least 16 characters long. Store the password in a secured place.
     - **Note**: Once TPM boot is configured, the encryption password will only be used for emergency recovery.
@@ -80,7 +81,7 @@ The publication outlines 14 families of security requirements that aim to secure
 12. Click **No** and then **Next** to avoid sending information to Canonical. Click **Next** and leave location servic disabled. Next, click **Done**. 
 ![ubuntu_install_13](/assets/img/posts/ubuntu_install_13.webp)
 
-#Prep System for Hardening
+## Prep System for Hardening
 13. Click the **Show Applications** button on the lower left and type in **Terminal** to start the application.
 ![ubuntu_hardening_1](/assets/img/posts/ubuntu_hardening_1.webp)
 14. Update the system files and upgrade any files.
@@ -117,7 +118,7 @@ sudo -u gdm gsettings set org.gnome.login-screen banner-message-text 'You are ac
 sudo -u gdm gsettings set org.gnome.desktop.media-handling automount false
 exit
 ```
-#DoD STIG Based Fixes
+## DoD STIG Based Fixes
 - Fixes from v18.04
     - rule_sysctl_fs_suid_dumpable
     - rule_sysctl_kernel_randomize_va_space
@@ -237,12 +238,13 @@ oscap xccdf eval \
 U_CAN_Ubuntu_20-04_LTS_V1R8_STIG_SCAP_1-2_Benchmark.xml
 ```
 
-## Manua Fixes
+## Manual Fixes
 The “openscap_NIST800171_report_XXXXXX-post.html” file that is generated is a HTML file that can be viewed in Mozilla Firefox or Google Chromium. 
 
 It contains the results of the security scan, states what changes need to be made, and how to make them. 
 
 Some of the fixes required cannot be done via a simple shell command but instead need to be done manually. An example is below:
+
 ![ubuntu_oscap_1](/assets/img/posts/ubuntu_oscap_1.webp)
 
 The section **Remediation Description** explains what changes need to be made to the system to resolve the failure.
