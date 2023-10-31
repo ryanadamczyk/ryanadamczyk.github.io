@@ -104,35 +104,35 @@ The publication outlines 14 families of security requirements that aim to secure
     ![ubuntu_install_13](/assets/img/posts/ubuntu_install_13.webp)
 
 ## Prep System for Hardening
-13. Click the **Show Applications** button on the lower left and type in **Terminal** to start the application.
+13\. Click the **Show Applications** button on the lower left and type in **Terminal** to start the application.
 
     ![ubuntu_hardening_1](/assets/img/posts/ubuntu_hardening_1.webp)
 
-14. Update the system files and upgrade any files.
+14\. Update the system files and upgrade any files.
     - **Note**: Most of the following commands will require **SUDO** mode
     ```bash
     sudo apt update
     sudo apt upgrade
     ```
-![u    buntu_hardening_2](/assets/img/posts/ubuntu_hardening_2.webp)
+    ![ubuntu_hardening_2](/assets/img/posts/ubuntu_hardening_2.webp)
 
-15. Install the following packages needed for hardening, then remove old packages.
+15\. Install the following packages needed for hardening, then remove old packages.
     - **Note**: For postfix options, choose the option **Local Installation** and name the current computer name the same as the DNS name.
     ```bash
     sudo apt install libopenscap8 vlock libpam-pkcs11 libpam-pwquality opensc-pkcs11 chrony clamav unattended-upgrades auditd aide
     sudo apt autoremove
     ```
-16. Install OpenSSH server if remote access to the system is required.
+16\. Install OpenSSH server if remote access to the system is required.
     - **Note**: This step must be done before the hardening script below in order to make sure that hardening steps are applied.
     ```bash
     sudo apt install openssh-server
     ```
-17. Set the login notification messages for local and remote logins.
+17\. Set the login notification messages for local and remote logins.
     ```bash
     echo 'You are accessing a system that is provided for authorized use only. By using this system, you consent to the acceptable use policy.' >> /etc/issue
     echo 'You are accessing a system that is provided for authorized use only. By using this system, you consent to the acceptable use policy.' > /etc/issue.net
     ```
-18. Set the timeout, login notification messages, and USB mount handling for the GUI session
+18\. Set the timeout, login notification messages, and USB mount handling for the GUI session
     - **Note**: this is specifically for the GDM session manager. Research will be needed to change the setting for KDE or other managers. They are not needed if the system does not have a GUI. These commands must be run in a terminal session of the GUI to work properly.
     ```bash
     sudo -i
@@ -185,7 +185,7 @@ The publication outlines 14 families of security requirements that aim to secure
 - "xccdf_mil.disa.stig_rule_SV-238363r654320_rule" cannot be configured without a Ubuntu subscription. However, this documentation activates and forces FIPS level encryption
 - "xccdf_mil.disa.stig_rule_SV-238330r654165_rule" is configured by the script to 60 days as opposed to the DOD documentation of 180
 
-19. Run the following fixes **as root** to manually resolve STIG rules based on the rules listed above
+19\. Run the following fixes **as root** to manually resolve STIG rules based on the rules listed above
     ```bash
     sudo bash
     sudo echo 'fs.suid_dumpable = 0' >> /etc/sysctl.d/10-kernel-hardening.conf
@@ -224,14 +224,14 @@ The publication outlines 14 families of security requirements that aim to secure
     ```
 
 ## OpenSCAP Configuration and Fix
-20. Create a folder to hold the guides and configuration scripts. Then, download the Ubuntu SCAP guide from the DoD website. Unzip the downloaded file.
+20\. Create a folder to hold the guides and configuration scripts. Then, download the Ubuntu SCAP guide from the DoD website. Unzip the downloaded file.
     ```bash
     mkdir openscap
     cd openscap
     wget https://dl.dod.cyber.mil/wp-content/uploads/stigs/zip/U_CAN_Ubuntu_20-04_LTS_V1R8_STIG_SCAP_1-2_Benchmark.zip
     unzip U_CAN_Ubuntu_20-04_LTS_V1R8_STIG_SCAP_1-2_Benchmark.zip
     ```
-21. Create a preliminary report and result file using the DoD STIG profile.
+21\. Create a preliminary report and result file using the DoD STIG profile.
     - **Note**: XXXXXX is to be replaced by today's date in the YYMMDD format; ex 221019
     ```bash
     oscap xccdf eval \
@@ -241,20 +241,20 @@ The publication outlines 14 families of security requirements that aim to secure
     --report openscap_NIST800171_report_XXXXXX-pre.html \
     U_CAN_Ubuntu_20-04_LTS_V1R8_STIG_SCAP_1-2_Benchmark.xml
     ```
-22. Generate a fix file using the previously generated results file.
+22\. Generate a fix file using the previously generated results file.
     ```bash
     sudo oscap xccdf generate fix \
     --fix-type bash --result-id xccdf_mil.disa.stig_profile_MAC-2_Sensitive \
     U_CAN_Ubuntu_20-04_LTS_V1R8_STIG_SCAP_1-2_Benchmark \
     > openscap_NIST800171-fix.sh
     ```
-23. Run the generated fix file in a roow environment.
+23\. Run the generated fix file in a roow environment.
     ```bash
     sudo bash
     sh ./openscap_NIST800171-fix.sh
     exit
     ```
-24. Generate a "post fix" report to find what fixes require manual modifications
+24\. Generate a "post fix" report to find what fixes require manual modifications
     - **Note**: XXXXXX is to be replaced by today's date in the YYMMDD format; ex 221019
     ```bash
     oscap xccdf eval \
@@ -275,6 +275,6 @@ Some of the fixes required cannot be done via a simple shell command but instead
 
 The section **Remediation Description** explains what changes need to be made to the system to resolve the failure.
 
-25. After all the changes are made manually, re-run the post report (Step 24) and verify the results.
+25\. After all the changes are made manually, re-run the post report (Step 24) and verify the results.
 
     Any future configurations of the system require that the security scan is again completed from **Step 24**
