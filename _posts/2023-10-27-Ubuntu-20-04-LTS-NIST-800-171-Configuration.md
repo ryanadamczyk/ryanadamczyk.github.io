@@ -129,11 +129,13 @@ sudo apt autoremove
 ```bash
 sudo apt install openssh-server
 ```
+
 17\. Set the login notification messages for local and remote logins.
 ```bash
 echo 'You are accessing a system that is provided for authorized use only. By using this system, you consent to the acceptable use policy.' >> /etc/issue
 echo 'You are accessing a system that is provided for authorized use only. By using this system, you consent to the acceptable use policy.' > /etc/issue.net
 ```
+
 18\. Set the timeout, login notification messages, and USB mount handling for the GUI session
 - **Note**: this is specifically for the GDM session manager. Research will be needed to change the setting for KDE or other managers. They are not needed if the system does not have a GUI. These commands must be run in a terminal session of the GUI to work properly.
 ```bash
@@ -243,6 +245,7 @@ oscap xccdf eval \
 --report openscap_NIST800171_report_XXXXXX-pre.html \
 U_CAN_Ubuntu_20-04_LTS_V1R8_STIG_SCAP_1-2_Benchmark.xml
 ```
+
 22\. Generate a fix file using the previously generated results file.
 ```bash
 sudo oscap xccdf generate fix \
@@ -250,12 +253,14 @@ sudo oscap xccdf generate fix \
 U_CAN_Ubuntu_20-04_LTS_V1R8_STIG_SCAP_1-2_Benchmark \
 > openscap_NIST800171-fix.sh
 ```
+
 23\. Run the generated fix file in a roow environment.
 ```bash
 sudo bash
 sh ./openscap_NIST800171-fix.sh
 exit
 ```
+
 24\. Generate a "post fix" report to find what fixes require manual modifications
 - **Note**: XXXXXX is to be replaced by today's date in the YYMMDD format; ex 221019
 ```bash
