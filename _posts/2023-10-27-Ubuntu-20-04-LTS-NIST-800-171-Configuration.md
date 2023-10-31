@@ -54,36 +54,60 @@ The publication outlines 14 families of security requirements that aim to secure
 
 ## Fresh Ubuntu 20.04 LTS Installation
 1. Install Ubuntu 20.04 via DVD, ISO, or USB
+
 ![ubuntu_install_1](/assets/img/posts/ubuntu_install_1.webp)
+
 ![ubuntu_install_2](/assets/img/posts/ubuntu_install_2.webp)
+
 2. If an internet connection is available, choose **Download updates while installing Ubuntu**. Also choose **Install third-party software for graphics...** if specialized drivers are needed for hardware.
+
 ![ubuntu_install_3](/assets/img/posts/ubuntu_install_3.webp)
+
 3. If there is only one drive in the system, use the default setting to configure the drive and choose **Advanced Features** to enable LVM with encryption. Otherwise, configure the partitions and encrypted volumes under **Something Else**.
 
 ![ubuntu_install_4](/assets/img/posts/ubuntu_install_4.webp)
+
 4. In the LVM/Encryption screen, enter a very long complex password that will be used to encrypt the drive. The password should be at least 16 characters long. Store the password in a secured place.
     - **Note**: Once TPM boot is configured, the encryption password will only be used for emergency recovery.
+
 ![ubuntu_install_5](/assets/img/posts/ubuntu_install_5.webp)
+
 5. Choose **Install Now** once storage is configured. Next, choose **Continue** to write changes to disks.
 ![ubuntu_install_6](/assets/img/posts/ubuntu_install_6.webp)
+
 6. Choose the correct time zone for the system.
+
 ![ubuntu_install_7](/assets/img/posts/ubuntu_install_7.webp)
+
 7. The account created at this step will be used as the **Local Admin** account for the system. The computer name is also entered here, following the standards required for the group.
+
 ![ubuntu_install_8](/assets/img/posts/ubuntu_install_8.webp)
+
 8. The system wil begin the install. Once completed, allow it to reboot.
+
 ![ubuntu_install_9](/assets/img/posts/ubuntu_install_9.webp)
+
 9. Do not upgrade or update the system at this point. Upgrading will change the system to version 22.04, which is not supported. The **Software Updater** will not add the necessary features needed. Choose **Remind Me Later** and **Don't Upgrade**.
+
 ![ubuntu_install_10](/assets/img/posts/ubuntu_install_10.webp)
+
 10. Press **Skip** to continue the installation process.
+
 ![ubuntu_install_11](/assets/img/posts/ubuntu_install_11.webp)
+
 11. Click **Next** to skip the Livepath option, if the system does not have a Canonical license.
+
 ![ubuntu_install_12](/assets/img/posts/ubuntu_install_12.webp)
+
 12. Click **No** and then **Next** to avoid sending information to Canonical. Click **Next** and leave location servic disabled. Next, click **Done**. 
+
 ![ubuntu_install_13](/assets/img/posts/ubuntu_install_13.webp)
 
 ## Prep System for Hardening
 13. Click the **Show Applications** button on the lower left and type in **Terminal** to start the application.
+
 ![ubuntu_hardening_1](/assets/img/posts/ubuntu_hardening_1.webp)
+
 14. Update the system files and upgrade any files.
     - **Note**: Most of the following commands will require **SUDO** mode
 ```bash
@@ -91,6 +115,7 @@ sudo apt update
 sudo apt upgrade
 ```
 ![ubuntu_hardening_2](/assets/img/posts/ubuntu_hardening_2.webp)
+
 15. Install the following packages needed for hardening, then remove old packages.
     - **Note**: For postfix options, choose the option **Local Installation** and name the current computer name the same as the DNS name.
 ```bash
