@@ -118,13 +118,14 @@ sudo apt upgrade
 
 15\. Install the following packages needed for hardening, then remove old packages.
 
-    - **Note**: For postfix options, choose the option **Local Installation** and name the current computer name the same as the DNS name.
+- **Note**: For postfix options, choose the option **Local Installation** and name the current computer name the same as the DNS name.
+
 ```bash
-    sudo apt install libopenscap8 vlock libpam-pkcs11 libpam-pwquality opensc-pkcs11 chrony clamav unattended-upgrades auditd aide
-    sudo apt autoremove
+sudo apt install libopenscap8 vlock libpam-pkcs11 libpam-pwquality opensc-pkcs11 chrony clamav unattended-upgrades auditd aide
+sudo apt autoremove
 ```
 16\. Install OpenSSH server if remote access to the system is required.
-    - **Note**: This step must be done before the hardening script below in order to make sure that hardening steps are applied.
+- **Note**: This step must be done before the hardening script below in order to make sure that hardening steps are applied.
 ```bash
 sudo apt install openssh-server
 ```
@@ -134,7 +135,7 @@ echo 'You are accessing a system that is provided for authorized use only. By us
 echo 'You are accessing a system that is provided for authorized use only. By using this system, you consent to the acceptable use policy.' > /etc/issue.net
 ```
 18\. Set the timeout, login notification messages, and USB mount handling for the GUI session
-    - **Note**: this is specifically for the GDM session manager. Research will be needed to change the setting for KDE or other managers. They are not needed if the system does not have a GUI. These commands must be run in a terminal session of the GUI to work properly.
+- **Note**: this is specifically for the GDM session manager. Research will be needed to change the setting for KDE or other managers. They are not needed if the system does not have a GUI. These commands must be run in a terminal session of the GUI to work properly.
 ```bash
 sudo -i
 xhost +SI:localuser:gdm
@@ -233,7 +234,7 @@ wget https://dl.dod.cyber.mil/wp-content/uploads/stigs/zip/U_CAN_Ubuntu_20-04_LT
 unzip U_CAN_Ubuntu_20-04_LTS_V1R8_STIG_SCAP_1-2_Benchmark.zip
 ```
 21\. Create a preliminary report and result file using the DoD STIG profile.
-    - **Note**: XXXXXX is to be replaced by today's date in the YYMMDD format; ex 221019
+- **Note**: XXXXXX is to be replaced by today's date in the YYMMDD format; ex 221019
 ```bash
 oscap xccdf eval \
 --profile xccdf_mil.disa.stig_profile_MAC-2_Sensitive \
@@ -256,7 +257,7 @@ sh ./openscap_NIST800171-fix.sh
 exit
 ```
 24\. Generate a "post fix" report to find what fixes require manual modifications
-    - **Note**: XXXXXX is to be replaced by today's date in the YYMMDD format; ex 221019
+- **Note**: XXXXXX is to be replaced by today's date in the YYMMDD format; ex 221019
 ```bash
 oscap xccdf eval \
 --profile xccdf_mil.disa.stig_profile_MAC-2_Sensitive \
@@ -278,4 +279,36 @@ The section **Remediation Description** explains what changes need to be made to
 
 25\. After all the changes are made manually, re-run the post report (Step 24) and verify the results.
 
-    Any future configurations of the system require that the security scan is again completed from **Step 24**
+- Any future configurations of the system require that the security scan is again completed from **Step 24**
+
+## Locking GRUB Boot Screen
+It is important to set a password for the GRUB boot screen to prevent changes to the boot environment
+    - **Note**: The following commands must be run in a root environment due to the file redirection required.
+
+1. Generate an encrypted password by running:
+    ```bash
+    grub-mkpasswd-pbkdf2
+    ```
+    On the prompt enter your desired grub password
+
+2. The output should look somewhat like the following:
+    ```bash
+    Your PBKDF2 is grub.pbkdf2.sha512.10000.FC8373BCA15ATAN515ANRTT1516159AVVNTEAT41864TWATV74AFW44868WAF4884FWA4AJKY48
+    ```
+3. Copy the "grub.pbkdf2.sha512......" section of the output
+4. Run the following command: 
+    ```bash
+    sudo nano /etc/grub.d/40_custom
+    ```
+5. Inside the 40_custom file enter the following:
+    ```bash
+    set superusers = "bootroot"
+    password_pbkdf2 bootroot grub.sha512.10000.........
+    ```
+6. Run the following to update the grub:
+    ```bash
+    update-grubb
+    ```
+
+## Congratulations
+You have now successfully configured an Ubuntu 20.04 machine to be NIST 800-171 compliant!
