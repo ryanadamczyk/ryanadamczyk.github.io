@@ -55,94 +55,95 @@ The publication outlines 14 families of security requirements that aim to secure
 ## Fresh Ubuntu 20.04 LTS Installation
 1. Install Ubuntu 20.04 via DVD, ISO, or USB
 
-![ubuntu_install_1](/assets/img/posts/ubuntu_install_1.webp)
+    ![ubuntu_install_1](/assets/img/posts/ubuntu_install_1.webp)
 
-![ubuntu_install_2](/assets/img/posts/ubuntu_install_2.webp)
+    ![ubuntu_install_2](/assets/img/posts/ubuntu_install_2.webp)
 
 2. If an internet connection is available, choose **Download updates while installing Ubuntu**. Also choose **Install third-party software for graphics...** if specialized drivers are needed for hardware.
 
-![ubuntu_install_3](/assets/img/posts/ubuntu_install_3.webp)
+    ![ubuntu_install_3](/assets/img/posts/ubuntu_install_3.webp)
 
 3. If there is only one drive in the system, use the default setting to configure the drive and choose **Advanced Features** to enable LVM with encryption. Otherwise, configure the partitions and encrypted volumes under **Something Else**.
 
-![ubuntu_install_4](/assets/img/posts/ubuntu_install_4.webp)
+    ![ubuntu_install_4](/assets/img/posts/ubuntu_install_4.webp)
 
 4. In the LVM/Encryption screen, enter a very long complex password that will be used to encrypt the drive. The password should be at least 16 characters long. Store the password in a secured place.
     - **Note**: Once TPM boot is configured, the encryption password will only be used for emergency recovery.
 
-![ubuntu_install_5](/assets/img/posts/ubuntu_install_5.webp)
+    ![ubuntu_install_5](/assets/img/posts/ubuntu_install_5.webp)
 
 5. Choose **Install Now** once storage is configured. Next, choose **Continue** to write changes to disks.
-![ubuntu_install_6](/assets/img/posts/ubuntu_install_6.webp)
+![ubuntu_install_6](/assets/img/posts/ubuntu_install_6.webp)    
 
 6. Choose the correct time zone for the system.
 
-![ubuntu_install_7](/assets/img/posts/ubuntu_install_7.webp)
+    ![ubuntu_install_7](/assets/img/posts/ubuntu_install_7.webp)
 
 7. The account created at this step will be used as the **Local Admin** account for the system. The computer name is also entered here, following the standards required for the group.
 
-![ubuntu_install_8](/assets/img/posts/ubuntu_install_8.webp)
+    ![ubuntu_install_8](/assets/img/posts/ubuntu_install_8.webp)
 
 8. The system wil begin the install. Once completed, allow it to reboot.
 
-![ubuntu_install_9](/assets/img/posts/ubuntu_install_9.webp)
+    ![ubuntu_install_9](/assets/img/posts/ubuntu_install_9.webp)
 
 9. Do not upgrade or update the system at this point. Upgrading will change the system to version 22.04, which is not supported. The **Software Updater** will not add the necessary features needed. Choose **Remind Me Later** and **Don't Upgrade**.
 
-![ubuntu_install_10](/assets/img/posts/ubuntu_install_10.webp)
+    ![ubuntu_install_10](/assets/img/posts/ubuntu_install_10.webp)
 
 10. Press **Skip** to continue the installation process.
 
-![ubuntu_install_11](/assets/img/posts/ubuntu_install_11.webp)
+    ![ubuntu_install_11](/assets/img/posts/ubuntu_install_11.webp)
 
 11. Click **Next** to skip the Livepath option, if the system does not have a Canonical license.
 
-![ubuntu_install_12](/assets/img/posts/ubuntu_install_12.webp)
+    ![ubuntu_install_12](/assets/img/posts/ubuntu_install_12.webp)
 
 12. Click **No** and then **Next** to avoid sending information to Canonical. Click **Next** and leave location servic disabled. Next, click **Done**. 
 
-![ubuntu_install_13](/assets/img/posts/ubuntu_install_13.webp)
+    ![ubuntu_install_13](/assets/img/posts/ubuntu_install_13.webp)
 
 ## Prep System for Hardening
 13. Click the **Show Applications** button on the lower left and type in **Terminal** to start the application.
 
-![ubuntu_hardening_1](/assets/img/posts/ubuntu_hardening_1.webp)
+    ![ubuntu_hardening_1](/assets/img/posts/ubuntu_hardening_1.webp)
 
 14. Update the system files and upgrade any files.
     - **Note**: Most of the following commands will require **SUDO** mode
-```bash
-sudo apt update
-sudo apt upgrade
-```
-![ubuntu_hardening_2](/assets/img/posts/ubuntu_hardening_2.webp)
+    ```bash
+    sudo apt update
+    sudo apt upgrade
+    ```
+![u    buntu_hardening_2](/assets/img/posts/ubuntu_hardening_2.webp)
 
 15. Install the following packages needed for hardening, then remove old packages.
     - **Note**: For postfix options, choose the option **Local Installation** and name the current computer name the same as the DNS name.
-```bash
-sudo apt install libopenscap8 vlock libpam-pkcs11 libpam-pwquality opensc-pkcs11 chrony clamav unattended-upgrades auditd aide
-sudo apt autoremove
-```
+    ```bash
+    sudo apt install libopenscap8 vlock libpam-pkcs11 libpam-pwquality opensc-pkcs11 chrony clamav unattended-upgrades auditd aide
+    sudo apt autoremove
+    ```
 16. Install OpenSSH server if remote access to the system is required.
     - **Note**: This step must be done before the hardening script below in order to make sure that hardening steps are applied.
-```bash
-sudo apt install openssh-server
-```
+    ```bash
+    sudo apt install openssh-server
+    ```
 17. Set the login notification messages for local and remote logins.
-```bash
-echo 'You are accessing a system that is provided for authorized use only. By using this system, you consent to the acceptable use policy.' >> /etc/issue
-echo 'You are accessing a system that is provided for authorized use only. By using this system, you consent to the acceptable use policy.' > /etc/issue.net
-```
+    ```bash
+    echo 'You are accessing a system that is provided for authorized use only. By using this system, you consent to the acceptable use policy.' >> /etc/issue
+    echo 'You are accessing a system that is provided for authorized use only. By using this system, you consent to the acceptable use policy.' > /etc/issue.net
+    ```
 18. Set the timeout, login notification messages, and USB mount handling for the GUI session
     - **Note**: this is specifically for the GDM session manager. Research will be needed to change the setting for KDE or other managers. They are not needed if the system does not have a GUI. These commands must be run in a terminal session of the GUI to work properly.
-```bash
-sudo -i
-xhost +SI:localuser:gdm
-sudo -u gdm gsettings set org.gnome.login-screen disable-user-list true
-sudo -u gdm gsettings set org.gnome.login-screen banner-message-enable true
-sudo -u gdm gsettings set org.gnome.login-screen banner-message-text 'You are accessing a system that is provided for authorized use only. By using this system, you consent to the acceptable use policy.'
-sudo -u gdm gsettings set org.gnome.desktop.media-handling automount false
-exit
-```
+    ```bash
+    sudo -i
+    xhost +SI:localuser:gdm
+    sudo -u gdm gsettings set org.gnome.login-screen disable-user-list true
+    sudo -u gdm gsettings set org.gnome.login-screen banner-message-enable true
+    sudo -u gdm gsettings set org.gnome.login-screen banner-message-text 'You are accessing a system that is provided for authorized use only. By using this system, you consent to the acceptable use policy.'
+    sudo -u gdm gsettings set org.gnome.desktop.media-handling automount false
+    exit
+    ```
+
 ## DoD STIG Based Fixes
 - Fixes from v18.04
     - rule_sysctl_fs_suid_dumpable
@@ -185,83 +186,83 @@ exit
 - "xccdf_mil.disa.stig_rule_SV-238330r654165_rule" is configured by the script to 60 days as opposed to the DOD documentation of 180
 
 19. Run the following fixes **as root** to manually resolve STIG rules based on the rules listed above
-```bash
-sudo bash
-sudo echo 'fs.suid_dumpable = 0' >> /etc/sysctl.d/10-kernel-hardening.conf
-sudo echo 'kernel.randomize_va_space = 2' >> /etc/sysctl.d/10-kernel-hardening.conf
-sudo sed -i 's/PASS_MIN_DAYS.*0/PASS_MIN_DAYS 1/g' /etc/login.defs
-sudo sed -i 's/PASS_MAX_DAYS.*99999/PASS_MAX_DAYS 60/g' /etc/login.defs
-sudo sed -i 's/UMASK.*022/UMASK 077/g' /etc/login.defs
-sudo sed -i 's/end of pam-auth-update config/\nFIX xccdf_mil\.disa\.stig_rule_SV-238210r653805/g' /etc/pam.d/common-auth
-sudo echo 'auth [success=2 default=ignore] pam_pkcs11.so' >>  /etc/pam.d/common-auth
-sudo echo 'end of pam-auth-update config' >>  /etc/pam.d/common-auth
-sudo echo 'PubkeyAuthentication yes' >> /etc/ssh/sshd_config
-sudo echo 'Ciphers aes256-ctr,aes192-ctr,aes128-ctr' >> /etc/ssh/sshd_config
-sudo echo  'MACs hmac-sha2-512,hmac-sha2-256' >> /etc/ssh/sshd_config
-sudo echo 'ClientAliveCountMax 1' >> /etc/ssh/sshd_config
-sudo echo 'ClientAliveInterval 600' >> /etc/ssh/sshd_config
-sudo echo 'PermitEmptyPasswords no' >> /etc/ssh/sshd_config
-sudo echo 'PermitUserEnvironment no' >> /etc/ssh/sshd_config
-sudo sed -i 's/X11Forwarding\ yes/X11Forwarding\ no/g' etc/ssh/sshd_config
-sudo echo 'X11UseLocalhost yes' >> /etc/ssh/sshd_config
-sudo echo 'ucredit=-1' >> /etc/security/pwquality.conf
-sudo echo 'lcredit=-1' >> /etc/security/pwquality.conf
-sudo echo 'dcredit=-1' >> /etc/security/pwquality.conf
-sudo echo 'ocredit=-1' >> /etc/security/pwquality.conf
-sudo echo 'difok=8' >> /etc/security/pwquality.conf
-sudo echo 'minlen=15' >> /etc/security/pwquality.conf
-sudo echo 'dictcheck=1' >> /etc/security/pwquality.conf
-sudo echo 'enforcing=1' >> /etc/security/pwquality.conf
-sudo echo 'auth required pam_faildelay.so delay=4000000' >> /etc/pam.d/common-auth
-sudo sudo sed -i 's/makestep\ 1\ 3/makestep\ 1\ -1/g' /etc/chrony/chrony.conf
-sudo cp /usr/share/doc/libpam-pkcs11/examples/pam_pkcs11.conf.example /etc/pam_pkcs11/pam_pkcs11.conf
-sudo chmod -R 0640 /etc/audit/audit*.{rules,conf} /etc/audit/rules.d/*
-sudo chown root /etc/audit/audit*.{rules,conf} /etc/audit/rules.d/*
-sudo useradd -D -f 60
-sudo find /var/log -perm /137 -type f -exec chmod 640 '{}' \;
-sudo chmod 0750 /var/log
-```
+    ```bash
+    sudo bash
+    sudo echo 'fs.suid_dumpable = 0' >> /etc/sysctl.d/10-kernel-hardening.conf
+    sudo echo 'kernel.randomize_va_space = 2' >> /etc/sysctl.d/10-kernel-hardening.conf
+    sudo sed -i 's/PASS_MIN_DAYS.*0/PASS_MIN_DAYS 1/g' /etc/login.defs
+    sudo sed -i 's/PASS_MAX_DAYS.*99999/PASS_MAX_DAYS 60/g' /etc/login.defs
+    sudo sed -i 's/UMASK.*022/UMASK 077/g' /etc/login.defs
+    sudo sed -i 's/end of pam-auth-update config/\nFIX xccdf_mil\.disa\.stig_rule_SV-238210r653805/g' /etc/pam.d/common-auth
+    sudo echo 'auth [success=2 default=ignore] pam_pkcs11.so' >>  /etc/pam.d/common-auth
+    sudo echo 'end of pam-auth-update config' >>  /etc/pam.d/common-auth
+    sudo echo 'PubkeyAuthentication yes' >> /etc/ssh/sshd_config
+    sudo echo 'Ciphers aes256-ctr,aes192-ctr,aes128-ctr' >> /etc/ssh/sshd_config
+    sudo echo  'MACs hmac-sha2-512,hmac-sha2-256' >> /etc/ssh/sshd_config
+    sudo echo 'ClientAliveCountMax 1' >> /etc/ssh/sshd_config
+    sudo echo 'ClientAliveInterval 600' >> /etc/ssh/sshd_config
+    sudo echo 'PermitEmptyPasswords no' >> /etc/ssh/sshd_config
+    sudo echo 'PermitUserEnvironment no' >> /etc/ssh/sshd_config
+    sudo sed -i 's/X11Forwarding\ yes/X11Forwarding\ no/g' etc/ssh/sshd_config
+    sudo echo 'X11UseLocalhost yes' >> /etc/ssh/sshd_config
+    sudo echo 'ucredit=-1' >> /etc/security/pwquality.conf
+    sudo echo 'lcredit=-1' >> /etc/security/pwquality.conf
+    sudo echo 'dcredit=-1' >> /etc/security/pwquality.conf
+    sudo echo 'ocredit=-1' >> /etc/security/pwquality.conf
+    sudo echo 'difok=8' >> /etc/security/pwquality.conf
+    sudo echo 'minlen=15' >> /etc/security/pwquality.conf
+    sudo echo 'dictcheck=1' >> /etc/security/pwquality.conf
+    sudo echo 'enforcing=1' >> /etc/security/pwquality.conf
+    sudo echo 'auth required pam_faildelay.so delay=4000000' >> /etc/pam.d/common-auth
+    sudo     sudo sed -i 's/makestep\ 1\ 3/makestep\ 1\ -1/g' /etc/chrony/chrony.conf
+    sudo cp /usr/share/doc/libpam-pkcs11/examples/pam_pkcs11.conf.example /etc/pam_pkcs11/pam_pkcs11.conf
+    sudo chmod -R 0640 /etc/audit/audit*.{rules,conf} /etc/audit/rules.d/*
+    sudo chown root /etc/audit/audit*.{rules,conf} /etc/audit/rules.d/*
+    sudo useradd -D -f 60
+    sudo find /var/log -perm /137 -type f -exec chmod 640 '{}' \;
+    sudo chmod 0750 /var/log
+    ```
 
 ## OpenSCAP Configuration and Fix
 20. Create a folder to hold the guides and configuration scripts. Then, download the Ubuntu SCAP guide from the DoD website. Unzip the downloaded file.
-```bash
-mkdir openscap
-cd openscap
-wget https://dl.dod.cyber.mil/wp-content/uploads/stigs/zip/U_CAN_Ubuntu_20-04_LTS_V1R8_STIG_SCAP_1-2_Benchmark.zip
-unzip U_CAN_Ubuntu_20-04_LTS_V1R8_STIG_SCAP_1-2_Benchmark.zip
-```
+    ```bash
+    mkdir openscap
+    cd openscap
+    wget https://dl.dod.cyber.mil/wp-content/uploads/stigs/zip/U_CAN_Ubuntu_20-04_LTS_V1R8_STIG_SCAP_1-2_Benchmark.zip
+    unzip U_CAN_Ubuntu_20-04_LTS_V1R8_STIG_SCAP_1-2_Benchmark.zip
+    ```
 21. Create a preliminary report and result file using the DoD STIG profile.
     - **Note**: XXXXXX is to be replaced by today's date in the YYMMDD format; ex 221019
-```bash
-oscap xccdf eval \
---profile xccdf_mil.disa.stig_profile_MAC-2_Sensitive \
---fetch-remote-resources \
---results openscap_NIST800171_results-install.xml \
---report openscap_NIST800171_report_XXXXXX-pre.html \
-U_CAN_Ubuntu_20-04_LTS_V1R8_STIG_SCAP_1-2_Benchmark.xml
-```
+    ```bash
+    oscap xccdf eval \
+    --profile xccdf_mil.disa.stig_profile_MAC-2_Sensitive \
+    --fetch-remote-resources \
+    --results openscap_NIST800171_results-install.xml \
+    --report openscap_NIST800171_report_XXXXXX-pre.html \
+    U_CAN_Ubuntu_20-04_LTS_V1R8_STIG_SCAP_1-2_Benchmark.xml
+    ```
 22. Generate a fix file using the previously generated results file.
-```bash
-sudo oscap xccdf generate fix \
---fix-type bash --result-id xccdf_mil.disa.stig_profile_MAC-2_Sensitive \
-U_CAN_Ubuntu_20-04_LTS_V1R8_STIG_SCAP_1-2_Benchmark \
-> openscap_NIST800171-fix.sh
-```
+    ```bash
+    sudo oscap xccdf generate fix \
+    --fix-type bash --result-id xccdf_mil.disa.stig_profile_MAC-2_Sensitive \
+    U_CAN_Ubuntu_20-04_LTS_V1R8_STIG_SCAP_1-2_Benchmark \
+    > openscap_NIST800171-fix.sh
+    ```
 23. Run the generated fix file in a roow environment.
-```bash
-sudo bash
-sh ./openscap_NIST800171-fix.sh
-exit
-```
+    ```bash
+    sudo bash
+    sh ./openscap_NIST800171-fix.sh
+    exit
+    ```
 24. Generate a "post fix" report to find what fixes require manual modifications
     - **Note**: XXXXXX is to be replaced by today's date in the YYMMDD format; ex 221019
-```bash
-oscap xccdf eval \
---profile xccdf_mil.disa.stig_profile_MAC-2_Sensitive \
---fetch-remote-resources \
---report openscap_NIST800171_report_XXXXXX-post.html \
-U_CAN_Ubuntu_20-04_LTS_V1R8_STIG_SCAP_1-2_Benchmark.xml
-```
+    ```bash
+    oscap xccdf eval \
+    --profile xccdf_mil.disa.stig_profile_MAC-2_Sensitive \
+    --fetch-remote-resources \
+    --report openscap_NIST800171_report_XXXXXX-post.html \
+    U_CAN_Ubuntu_20-04_LTS_V1R8_STIG_SCAP_1-2_Benchmark.xml
+    ```
 
 ## Manual Fixes
 The “openscap_NIST800171_report_XXXXXX-post.html” file that is generated is a HTML file that can be viewed in Mozilla Firefox or Google Chromium. 
@@ -270,10 +271,10 @@ It contains the results of the security scan, states what changes need to be mad
 
 Some of the fixes required cannot be done via a simple shell command but instead need to be done manually. An example is below:
 
-![ubuntu_oscap_1](/assets/img/posts/ubuntu_oscap_1.webp)
+    ![ubuntu_oscap_1](/assets/img/posts/ubuntu_oscap_1.webp)
 
 The section **Remediation Description** explains what changes need to be made to the system to resolve the failure.
 
 25. After all the changes are made manually, re-run the post report (Step 24) and verify the results.
 
-Any future configurations of the system require that the security scan is again completed from **Step 24**
+    Any future configurations of the system require that the security scan is again completed from **Step 24**
