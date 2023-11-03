@@ -8,7 +8,7 @@ order: 4
 
 #  👋  Greetings!
 
-My name is Ryan Adamczyk, and I'm presently pursuing my Masters while working as an IT Specialist at Florida Atlantic University. I currently hold a Bachelors of Business Administration in Management Information Systems with a concentration in Business Analytics. 
+My name is Ryan Adamczyk, and I'm presently pursuing my Masters in IT and Management while working as an Junior Systems Administration Intern at Florida Atlantic University. I currently hold a Bachelors of Business Administration in Management Information Systems with a concentration in Business Analytics. 
 
 I am a HomeLab enthusiast who is constantly tinkering to learn more about my areas of interest. 
 
