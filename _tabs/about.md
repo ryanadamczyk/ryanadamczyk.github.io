@@ -8,11 +8,13 @@ order: 4
 
 #  👋  Greetings!
 
-My name is Ryan Adamczyk, and I'm presently pursuing my Masters in IT and Management while working as an Junior Systems Administration Intern at Florida Atlantic University. I currently hold a Bachelors of Business Administration in Management Information Systems with a concentration in Business Analytics. 
+My name is Ryan Adamczyk, and i'm currently a Business Analyst at FIS working on the Global Real Estate team.
 
-I am a HomeLab enthusiast who is constantly tinkering to learn more about my areas of interest. 
+I previously recieved my Masters's in IT and Management while working as a Junior Systems Administration Intern at Florida Atlantic University.
 
-At 22 years old, I am an aspiring technology professional eager to make a significant entrance into the IT field, with a keen interest in roles such as Systems Administrator or equivalent.
+I am a HomeLab enthusiast who is constantly tinkering to learn more about my areas of interest.
+
+At 22 years old, I am an aspiring technology professional eager to make a significant impact on the teams and businesses I service.
 
 # 🔥 Hobbies and Interests
 
