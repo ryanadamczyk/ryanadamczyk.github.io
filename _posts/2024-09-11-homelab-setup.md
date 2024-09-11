@@ -11,7 +11,7 @@ image:
 # Why HomeLab?
 During my time at Florida Atlantic University, I had the chance to gain hands-on experience in a hypervisor environment. Although my permissions and scope were limited, I was captivated from the start. To safely explore and learn about hypervisors, virtual machines, Linux, networking, and more, I decided to set up my own HomeLab.  
 
-# Hardware and Software
+## Hardware and Software
 To start my HomeLab I picked up a 12th generation Intel NUC (NUC12WSKi7) on eBay barebones for $535.   
 On the NUC I decided to run Promox VE 8.0.3.  
 Inside the NUC I have:  
@@ -30,7 +30,7 @@ Inside the Raspberry Pi 4 is:
     64 GB MicroSD (vSphere)
     128 GB Flash Drive (Data Volume)
 
-# Initial Goals
+## Initial Goals
 Some of my initial goals, beyond learning to navigate and manage a hypervisor environment, included:
 
 - Learning Linux
@@ -41,7 +41,7 @@ Some of my initial goals, beyond learning to navigate and manage a hypervisor en
 
 I have successfully achieved many of these goals and have now shifted my focus to learning Kubernetes and Ansible. I aim to automate my entire HomeLab with playbooks and potentially achieve high availability capabilities if I add more nodes in the future.
 
-# Virtual Machines and their use cases
+## Virtual Machines and their use cases
 After setting up my initial Promox node and data volumes I created the following VM's:
 - pihole
 - portainer
@@ -107,5 +107,5 @@ After successfully setting up the server, I faced the challenge of allowing my f
 
 Initially, I decided to use Tailscale as an easy-to-use VPN to allow my friends to connect to the server. However, Tailscale is only free for personal use. I discovered a workaround by creating a GitHub organization, inviting my friends, then signing into Tailscale with GitHub and selecting the organization. This allows me to invite as many friends as I want to the organization and provide them with VPN access to the server. To enhance security, I also ensured all users in the organization have 2FA configured.
 
-# Conclusion
+## Conclusion
 This has been a broad overview of how I’ve utilized my HomeLab for personal use and learning. I highly encourage anyone thinking about setting up a HomeLab to go for it. You can achieve almost everything I’ve done with any functional spare computer. Thank you for reading, and if you have any questions, feel free to reach out!
