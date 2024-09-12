@@ -114,4 +114,64 @@ With that being said, here is the flows structures as well as details for each f
     - Top Count: 300
         - This is set to optimize the flow
 18. Apply to each
-    - 
+    - Select An Output From Previous Steps: Select the dynamic content 'body/value' from the SharePoint
+    - Inside the Apply to Each loop add the following:
+        - Compose
+            - Inputs: Select the dynamic content 'TimeSlot.Value' from the SharePoint
+        - Compose 1
+            - Inputs: SelectedTimeSlot Variable
+        - Condition
+            - AND:
+                - Compose is equal to Compose 1
+            - For True add:
+                - Increment Variable
+                    - Name: TimeSlotCount
+                    - Value: 1
+            - For False add nothing
+19. Condition 1
+    - AND:
+        - TimeSlotCount is less then MaxCount
+    - For True add:
+        - Get Items 1
+            - Site Address: Use the link to your personal SharePoint
+            - List Name: Select the list you created earlier in SharePoint
+            - Filter Query: TimeSlot eq 'SelectedTimeSlot'
+        - Apply to Each 1
+            - Select An Output From Previous Steps: Select the dynamic content 'body/value' from the SharePoint
+            - Update Item
+                - Site Address: Use the link to your personal SharePoint
+                - List Name: Select the list you created earlier in SharePoint
+                - ID: Select the dynamic content 'ID' from the SharePoint
+                - Response Count: add(items('Apply_to_Each1')?['ResponseCount'], 1)
+        - Create Item
+            - Site Address: Use the link to your personal SharePoint
+            - List Name: Select the list you created earlier in SharePoint
+            - Title: Use the dyanmic content 'Full Name' from the Microsoft Form
+            - Time Slot Value: Use the SelectedTimeSlot variable
+            - Response Count: add(variables('TimeSlotCount'),1)
+        - Create Event (V4)
+            - Calendar ID: Calendar
+            - Subject: ______ Confirmation
+            - Start Time: Use the StartTime variable
+            - End Time: Use the EndTime variable
+            - Time Zone: Use your local time zone
+            - Required Attendees: Use the dynamic content 'Responder's Email' from the form
+            - Body: Write your desired event message
+            - Location: Add your desired location
+            - Show As: busy
+    - For False add:
+        - Send me an email notification
+            - Subject: _____ Time Slot Full
+            - Body: Sadly the time slot you selected 'SelectedTimeSlot' is already full, please select a different time slot
+
+## Flow Completion
+You should now have a functional flow that triggers upon form submission, verifies the response against SharePoint list data, inserts the data into the SharePoint list, and sends a confirmation to the user.   
+
+Here is a rough screenshot of what the ending flow should look like:  
+
+![pa_flow](/assets/img/posts/pa_flow.webp)
+
+## Closing Remarks
+This is just one example of how you can utilize Power Automate with Microsoft Forms.  
+
+If you’re not collecting time slot data from users, you can adjust the variables accordingly, but the core logic and flow will remain consistent.
