@@ -9,7 +9,7 @@ image:
 ---
 
 # Power Automate & Microsoft Forms
-Power Automate can be a very powerful tool when the situation is appropiate.  
+Power Automate can be a very powerful tool when the situation is appropriate.  
 
 I recently found myself needing to create a Microsoft form that collects as follows:  
 - Ask for users Full Name
@@ -23,7 +23,7 @@ You would assume this might already be a feature in Microsoft Forms, however you
 Once I discovered I would have to be using Power Automate I decided I wanted to learn as much as possible and add lots of functionality to the form.  
 Therefore my goals for the flow were as follows:
 - Gather the users email and full name
-- Gather the users perfered time slot
+- Gather the users preferred time slot
 - Ensure that all time slots would not exceed the maximum capacity
 - Send a meeting invite to the user for their desired time as confirmation
 - Send an email to the user if their desired time was full
@@ -42,7 +42,7 @@ This list must contain matching columns to the form, so columns should look as f
 - Response Count
 
 ## Flow Structure
-Now by no means is this flow likely the most efficient way to do this task, however this was how I got it to work for my functionality. In the future I will look to discover ways to optimize my flow for efficency.  
+Now by no means is this flow likely the most efficient way to do this task, however this was how I got it to work for my functionality. In the future I will look to discover ways to optimize my flow for efficiency.  
 
 With that being said, here is the flows structures as well as details for each flow action:  
 1. When a new response is submitted
@@ -89,7 +89,7 @@ With that being said, here is the flows structures as well as details for each f
     - This compose action formats the EndTime variable to be usable in creating a meeting invite properly
 14. Set StartTime
     - Name: StartTime
-    - Value: Use the dyanmic output of the Formatted StartTime compose action
+    - Value: Use the dynamic output of the Formatted StartTime compose action
 15. Set EndTime
     - Name: EndTime
     - Value: Use the dynamic output of the Formatted EndTime compose action
@@ -146,7 +146,7 @@ With that being said, here is the flows structures as well as details for each f
         - Create Item
             - Site Address: Use the link to your personal SharePoint
             - List Name: Select the list you created earlier in SharePoint
-            - Title: Use the dyanmic content 'Full Name' from the Microsoft Form
+            - Title: Use the dynamic content 'Full Name' from the Microsoft Form
             - Time Slot Value: Use the SelectedTimeSlot variable
             - Response Count: add(variables('TimeSlotCount'),1)
         - Create Event (V4)
