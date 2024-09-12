@@ -10,11 +10,11 @@ order: 4
 
 My name is Ryan Adamczyk, and i'm currently a Business Analyst at FIS working on the Global Real Estate team.
 
-I previously recieved my Masters's in IT and Management while working as a Junior Systems Administration Intern at Florida Atlantic University.
+I previously received my Masters's in IT and Management while working as a Junior Systems Administration Intern at Florida Atlantic University.
 
 I am a HomeLab enthusiast who is constantly tinkering to learn more about my areas of interest.
 
-At 22 years old, I am an aspiring technology professional eager to make a significant impact on the teams and businesses I service.
+At 23 years old, I am an aspiring technology professional eager to make a significant impact on the teams and businesses I service.
 
 # 🔥 Hobbies and Interests
 
@@ -22,5 +22,6 @@ In case you are interested here are some of my favorite hobbies and interests cu
 
 - Running
 - Biking
+- Reading
 - Cryptocurrency/Blockchain Technology
-- Video Games (.zex0 on discord if you want to play)
+- Video Games
