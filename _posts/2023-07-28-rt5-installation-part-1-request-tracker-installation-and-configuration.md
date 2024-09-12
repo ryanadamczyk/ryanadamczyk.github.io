@@ -39,7 +39,7 @@ sudo make dirs
 make fixdeps RT_FIX_DEPS_CMD="cpanm --sudo"
 sudo cpanm DBD::mysql
 ```
-Now we will test our dependecies and install.
+Now we will test our dependencies and install.
 ```bash
 sudo make testdeps
 sudo make install
