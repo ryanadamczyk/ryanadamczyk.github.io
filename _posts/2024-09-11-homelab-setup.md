@@ -13,7 +13,7 @@ During my time at Florida Atlantic University, I had the chance to gain hands-on
 
 ## Hardware and Software
 To start my HomeLab I picked up a 12th generation Intel NUC (NUC12WSKi7) on eBay barebones for $535.   
-On the NUC I decided to run Promox VE 8.0.3.  
+On the NUC I decided to run Proxmox VE 8.0.3.  
 Inside the NUC I have:  
 
     16 Core i7-1260P CPU
@@ -42,18 +42,18 @@ Some of my initial goals, beyond learning to navigate and manage a hypervisor en
 I have successfully achieved many of these goals and have now shifted my focus to learning Kubernetes and Ansible. I aim to automate my entire HomeLab with playbooks and potentially achieve high availability capabilities if I add more nodes in the future.
 
 ## Virtual Machines and their use cases
-After setting up my initial Promox node and data volumes I created the following VM's:
+After setting up my initial Proxmox node and data volumes I created the following VM's:
 - pihole
 - portainer
 - media
 - game-server
 
 ### PiHole
-The first thing I did after setting up Promox was create a PiHole LXC container directly within Proxmox.  
+The first thing I did after setting up Proxmox was create a PiHole LXC container directly within Proxmox.  
 
 This was important to set up first, as I planned on using PiHole as my HomeLabs DNS server to both block adds and allow for setting up a reverse proxy with traefik.
 ### Portainer
-In this VM I am running Ubuntu 20.04 LTS headlessly.  
+In this VM I am running Ubuntu 20.04 LTS headless.  
 
 I installed Docker and Docker Compose and used the following .YML file to spin up my portainer instance.
 ```bash
@@ -97,7 +97,7 @@ In this VM I am running TrueNAS Core to section off data storage specifically fo
  I am also running Jellyfin as a container within TrueNAS Core to provide media streaming capabilities to all my computers and TV's connected to my home network.
 
 ### Game-Server
-The last VM I created was my ‘game-server’ VM, which I decided to run headlessly on Ubuntu 20.04 LTS.
+The last VM I created was my ‘game-server’ VM, which I decided to run headless on Ubuntu 20.04 LTS.
 
 My friends and I play a lot of Minecraft and wanted to stop paying for realms or dedicated servers. So, I installed Java and configured this VM to run a dedicated Minecraft server.
 
