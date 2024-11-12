@@ -1,0 +1,48 @@
+---
+layout: default
+---
+
+<div class="intro-text">
+  <p>Welcome to my personal blog! Here you'll find my latest posts, thoughts, and updates. I hope you enjoy browsing through my content.</p>
+</div>
+
+<!-- Line break -->
+<div class="line-break"></div>
+
+<!-- New Links Section -->
+<!--
+<div class="link-section">
+  <ul class="custom-links">
+    <li><a href="{{ site.baseurl }}/own-platform/">Content I've written on <span> my own platform</span></a></li>
+    <li><a href="{{ site.baseurl }}/third-party/">Content I've written for <span> third party publications</span></a></li>
+    <li><a href="{{ site.baseurl }}/podcast-video/">A selection of my <span> podcast and video appearances</span></a></li>
+    <li><a href="{{ site.baseurl }}/conference-talks/">Slides and video from my <span> conference talks</span></a></li>
+    <li><a href="{{ site.baseurl }}/papers/"><span>Papers </span> I have contributed to</a></li>
+  </ul>
+</div>
+-->
+
+<!-- Catalogue listing -->
+<div class="catalogue">
+  {% for post in site.posts %}
+    {% if post.sticky %}
+      {% include catalogue_item.html sticky='true' %}
+    {% endif %}
+  {% endfor %}
+
+  {% for post in paginator.posts %}
+    {% include catalogue_item.html %}
+  {% endfor %}
+</div>
+
+<!-- Pagination controls -->
+<div class="pagination">
+  {% if paginator.previous_page %}
+    <a href="{{ paginator.previous_page_path | prepend: site.baseurl }}" class="left arrow">&#8592;</a>
+  {% endif %}
+  {% if paginator.next_page %}
+    <a href="{{ paginator.next_page_path | prepend: site.baseurl }}" class="right arrow">&#8594;</a>
+  {% endif %}
+
+  <span>{{ paginator.page }}</span>
+</div>
