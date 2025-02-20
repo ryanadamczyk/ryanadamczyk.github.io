@@ -3,26 +3,14 @@ layout: default
 ---
 
 <div class="intro-text">
-  <p>Welcome to my personal blog! Here you'll find my latest posts, thoughts, and updates. I hope you enjoy browsing through my content.</p>
+  <h1>Hello. I'm Ryan.</h1>
+  <p>I'm passionate about open-source technology, self-hosting, and automation.</p>
+  <p>Professionally, I have experience in systems administration, business analytics, real estate management, and help desk.</p>
+  <p>As a HomeLab enthusiast, I'm constantly exploring and learning about areas of interest in tech.</p>
 </div>
-
-<!-- Line break -->
-<div class="line-break"></div>
-
-<!-- New Links Section -->
-<!--
-<div class="link-section">
-  <ul class="custom-links">
-    <li><a href="{{ site.baseurl }}/own-platform/">Content I've written on <span> my own platform</span></a></li>
-    <li><a href="{{ site.baseurl }}/third-party/">Content I've written for <span> third party publications</span></a></li>
-    <li><a href="{{ site.baseurl }}/podcast-video/">A selection of my <span> podcast and video appearances</span></a></li>
-    <li><a href="{{ site.baseurl }}/conference-talks/">Slides and video from my <span> conference talks</span></a></li>
-    <li><a href="{{ site.baseurl }}/papers/"><span>Papers </span> I have contributed to</a></li>
-  </ul>
-</div>
--->
 
 <!-- Catalogue listing -->
+<h1 class="posts-heading">Latest Blog Posts</h1>
 <div class="catalogue">
   {% for post in site.posts %}
     {% if post.sticky %}
@@ -43,6 +31,4 @@ layout: default
   {% if paginator.next_page %}
     <a href="{{ paginator.next_page_path | prepend: site.baseurl }}" class="right arrow">&#8594;</a>
   {% endif %}
-
-  <span>{{ paginator.page }}</span>
 </div>

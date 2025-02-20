@@ -18,5 +18,14 @@
   &-message {
     max-width: 25rem;
     margin: 0 auto;
+    color: $white;
+
+    a {
+      color: $default-tint;
+      
+      &:hover {
+        text-decoration: underline;
+      }
+    }
   }
 }

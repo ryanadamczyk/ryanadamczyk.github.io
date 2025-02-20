@@ -5,11 +5,11 @@
 
 html,
 body {
-  color: $default-color;
+  color: $white;
   margin: 0;
   padding: 0;
-  font-family: $serif-primary; // Ensure this uses the updated variable
-  background-color: #F6F4EE;
+  font-family: $serif-primary;
+  background-color: $background-color;  
 }
 
 html {
@@ -32,13 +32,13 @@ h3,
 h4,
 h5,
 h6 {
-  color: $default-shade;
+  color: $default-tint;
   font-family: $sans-serif;
   line-height: normal;
 }
 
 a {
-  color: $blue;
+  color: $white;
   text-decoration: none;
 }
 
