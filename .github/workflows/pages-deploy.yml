@@ -50,6 +50,12 @@ jobs:
         run: |
           bundle exec htmlproofer _site --disable-external --checks --allow_hash_href
 
+      - name: Check for Symlinks
+        run: find _site -type l -exec ls -lah {} \;
+        
+      - name: Check for Hard Links
+        run: find _site -type f -links +1
+
       - name: Remove symlinks
         run: find _site${{ steps.pages.outputs.base_path }} -type l -delete
 
