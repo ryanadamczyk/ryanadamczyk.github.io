@@ -21,6 +21,10 @@ include:
 sass:
   sass_dir: _sass
   style: compressed
+  sourcemap: never
+  load_paths:
+    - _sass
+    - node_modules
 
 # Gems
 plugins:
@@ -46,3 +50,8 @@ exclude:
 
 # Disqus (Set to your disqus id)
 disqus:         jekyll-tale
+
+# Base URL
+baseurl: ""  # for most cases
+# or
+baseurl: "/your-repo-name"  # if your site is in a project repository
