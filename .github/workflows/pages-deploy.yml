@@ -8,7 +8,6 @@ on:
       - .gitignore
       - README.md
       - LICENSE
-
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
@@ -26,7 +25,6 @@ concurrency:
 jobs:
   build:
     runs-on: ${{ fromJSON('["ubuntu-latest", "self-hosted"]')[github.repository == 'github/docs-internal'] }}
-
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -52,10 +50,13 @@ jobs:
         run: |
           bundle exec htmlproofer _site --disable-external --checks --allow_hash_href
 
+      - name: Remove symlinks
+        run: find _site${{ steps.pages.outputs.base_path }} -type l -delete
+
       - name: Upload site artifact
         uses: actions/upload-artifact@v4
         with:
-          path: "_site${{ steps.pages.outputs.base_path }}"
+          path: "_site_nosymlinks"
           name: github-pages
 
   deploy:
