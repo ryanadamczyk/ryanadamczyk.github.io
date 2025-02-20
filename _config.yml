@@ -2,6 +2,7 @@
 title:          Ryan Adamczyk
 description:    "A personal blog and resume for Ryan Adamczyk"
 url:            "https://ryanadamczyk.github.io/"
+baseurl: ""
 
 # Google Analytics
 google_analytics: 	G-NNPY63T2ND
@@ -50,8 +51,3 @@ exclude:
 
 # Disqus (Set to your disqus id)
 disqus:         jekyll-tale
-
-# Base URL
-baseurl: ""  # for most cases
-# or
-baseurl: "/your-repo-name"  # if your site is in a project repository
