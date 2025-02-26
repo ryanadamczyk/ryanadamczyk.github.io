@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  {% include head.html %}
+
+  <body>
+    <header>
+      {% include navigation.html %}
+    </header>
+
+    <main>
+      {{ content }}
+    </main>
+
+    <footer>
+      <div class="footer-content">
+        <div class="footer-sections">
+          <div class="footer-section">
+            <h2>Elsewhere</h2>
+            <ul>
+              <li><a href="https://github.com/ryanadamczyk">ryanadamczyk</a> on GitHub</li>
+              <li><a href="https://x.com/AdamczykRyan">@AdamczykRyan</a> on Twitter</li>
+              <li><a href="https://discord.com/users/161175207602683904">@.zex0</a> on Discord</li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h2>Contact me</h2>
+            <p>I love talking about all things tech. Email me: <a href="mailto:me@ryanadamczyk.com">me@ryanadamczyk.com</a></p>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <span>Copyright © {{ site.time | date: '%Y' }} {{ site.author.name }}. All rights reserved.</span>
+          <a href="#" class="back-to-top"><span class="arrow">↑</span>Back to top</a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+      console.log('Document loaded');  // Debug line
+    </script>
+    <script src="{{ "/assets/js/copy-code.js" | relative_url }}"></script>
+  </body>
+</html>

@@ -1,0 +1,57 @@
+# Site settings
+title:          Ryan Adamczyk
+description:    "A personal blog and resume for Ryan Adamczyk"
+url:            "https://ryanadamczyk.github.io/"
+baseurl: ""
+
+# Google Analytics
+google_analytics: 	G-NNPY63T2ND
+
+# Author
+author:
+  name:         Ryan Adamczyk
+  url:          https://radamczyk.com
+  email:        me@ryanadamczyk.com
+
+# Build settings
+markdown:       kramdown
+include:
+  - _pages
+
+# Assets
+sass:
+  sass_dir: _sass
+  style: compressed
+  sourcemap: never
+  load_paths:
+    - _sass
+    - node_modules
+
+# Gems
+plugins:
+  - jekyll-feed
+  - jekyll-paginate
+  - jekyll-seo-tag 
+
+# Permalinks
+permalink:      /:year-:month-:day/:title
+paginate:       5
+
+# Excludes
+exclude: 
+  - "*.gem"
+  - "*.gemspec"
+  - tools
+  - README.md
+  - CHANGELOG.md
+  - LICENSE
+  - rollup.config.js
+  - node_modules
+  - package*.json
+
+# Disqus (Set to your disqus id)
+disqus:         jekyll-tale
+
+# Build Settings
+build:
+  safe: true  
