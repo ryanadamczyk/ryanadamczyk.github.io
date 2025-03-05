@@ -5,11 +5,18 @@
   {% seo %}
 
   <!-- CSS -->
-  <link rel="stylesheet" href="{{ "/assets/main.css" | relative_url }}">
+  <style>
+    /* Critical CSS for above-the-fold content */
+    body { font-family: 'Libre Baskerville', serif; margin: 0; padding: 0; }
+    .nav { /* Navigation styles */ }
+    .nav-container { /* Container styles */ }
+    /* Add other critical styles */
+  </style>
+  <link rel="stylesheet" href="{{ "/assets/main.css" | relative_url }}" media="print" onload="this.media='all'">
   <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700"> -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&display=swap">
   
   <!-- Favicon -->
@@ -22,6 +29,21 @@
 
   <!-- Google Analytics-->
   {% if site.google_analytics and jekyll.environment == 'production' %}
-  {% include analytics.html %}
+  <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', '{{ site.google_analytics }}');
+  </script>
   {% endif %}
+
+  <!-- Add these to head.html -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  {% if page.comments %}
+  <link rel="preconnect" href="https://{{ site.disqus }}.disqus.com">
+  {% endif %}
+
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://{{ site.disqus }}.disqus.com 'unsafe-inline'; style-src 'self' https://fonts.googleapis.com 'unsafe-inline'; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self';">
 </head>

@@ -4,41 +4,38 @@
   {% include head.html %}
 
   <body>
-    <header>
+    <header class="site-header" role="banner">
       {% include navigation.html %}
     </header>
 
-    <main>
+    <main id="main-content" role="main">
       {{ content }}
     </main>
 
-    <footer>
+    <footer class="site-footer" role="contentinfo">
       <div class="footer-content">
         <div class="footer-sections">
           <div class="footer-section">
             <h2>Elsewhere</h2>
             <ul>
-              <li><a href="https://github.com/ryanadamczyk">ryanadamczyk</a> on GitHub</li>
-              <li><a href="https://x.com/AdamczykRyan">@AdamczykRyan</a> on Twitter</li>
-              <li><a href="https://discord.com/users/161175207602683904">@.zex0</a> on Discord</li>
+              <li><a href="https://github.com/ryanadamczyk" aria-label="Ryan's GitHub profile">ryanadamczyk</a> on GitHub</li>
+              <li><a href="https://x.com/AdamczykRyan" aria-label="Ryan's Twitter profile">@AdamczykRyan</a> on Twitter</li>
+              <li><a href="https://discord.com/users/161175207602683904" aria-label="Ryan's Discord profile">@.zex0</a> on Discord</li>
             </ul>
           </div>
           <div class="footer-section">
             <h2>Contact me</h2>
-            <p>I love talking about all things tech. Email me: <a href="mailto:me@ryanadamczyk.com">me@ryanadamczyk.com</a></p>
+            <p>I love talking about all things tech. Email me: <a href="mailto:me@ryanadamczyk.com" aria-label="Email Ryan">me@ryanadamczyk.com</a></p>
           </div>
         </div>
         <div class="footer-bottom">
           <span>Copyright © {{ site.time | date: '%Y' }} {{ site.author.name }}. All rights reserved.</span>
-          <a href="#" class="back-to-top"><span class="arrow">↑</span>Back to top</a>
+          <a href="#main-content" class="back-to-top" aria-label="Back to top"><span class="arrow">↑</span>Back to top</a>
         </div>
       </div>
     </footer>
 
     <!-- JavaScript -->
-    <script>
-      console.log('Document loaded');  // Debug line
-    </script>
-    <script src="{{ "/assets/js/copy-code.js" | relative_url }}"></script>
+    <script src="{{ "/assets/js/copy-code.js" | relative_url }}" defer></script>
   </body>
 </html>
