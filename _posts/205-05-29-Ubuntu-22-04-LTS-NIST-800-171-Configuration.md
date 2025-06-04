@@ -82,7 +82,7 @@ The publication outlines 14 families of security requirements that aim to secure
 
 ![ubuntu_install_9](/assets/img/posts/ubuntu_install_9.webp)
 
-9\. Do not upgrade or update the system at this point. Upgrading will change the system to version 22.04, which is not supported. The **Software Updater** will not add the necessary features needed. Choose **Remind Me Later** and **Don't Upgrade**.
+9\. Do not upgrade or update the system at this point. Upgrading will change the system to version 24.04, which is not supported in this guide. The **Software Updater** will not add the necessary features needed. Choose **Remind Me Later** and **Don't Upgrade**.
 
 ![ubuntu_install_10](/assets/img/posts/ubuntu_install_10.webp)
 
@@ -228,8 +228,8 @@ sudo chmod 0750 /var/log
 ```bash
 mkdir openscap
 cd openscap
-wget https://dl.dod.cyber.mil/wp-content/uploads/stigs/zip/U_CAN_Ubuntu_20-04_LTS_V1R8_STIG_SCAP_1-2_Benchmark.zip
-unzip U_CAN_Ubuntu_20-04_LTS_V1R8_STIG_SCAP_1-2_Benchmark.zip
+wget wget https://dl.dod.cyber.mil/wp-content/uploads/stigs/zip/U_CAN_Ubuntu_22-04_LTS_V2R2_STIG_SCAP_1-3_Benchmark.zip
+unzip U_CAN_Ubuntu_22-04_LTS_V2R2_STIG_SCAP_1-3_Benchmark.zip
 ```
 21\. Create a preliminary report and result file using the DoD STIG profile.
 - **Note**: XXXXXX is to be replaced by today's date in the YYMMDD format; ex 221019
@@ -237,20 +237,23 @@ unzip U_CAN_Ubuntu_20-04_LTS_V1R8_STIG_SCAP_1-2_Benchmark.zip
 oscap xccdf eval \
 --profile xccdf_mil.disa.stig_profile_MAC-2_Sensitive \
 --fetch-remote-resources \
---results openscap_NIST800171_results-install.xml \
---report openscap_NIST800171_report_XXXXXX-pre.html \
-U_CAN_Ubuntu_20-04_LTS_V1R8_STIG_SCAP_1-2_Benchmark.xml
+--results openscap_NIST800171_results-install_$(date +%Y%m%d_%H%M%S).xml \
+--report openscap_NIST800171_report_$(date +%Y%m%d_%H%M%S)-pre.html \
+U_CAN_Ubuntu_22-04_LTS_V2R2_STIG_SCAP_1-3_Benchmark.xml
+
 ```
 
 22\. Generate a fix file using the previously generated results file.
 ```bash
 sudo oscap xccdf generate fix \
---fix-type bash --result-id xccdf_mil.disa.stig_profile_MAC-2_Sensitive \
-U_CAN_Ubuntu_20-04_LTS_V1R8_STIG_SCAP_1-2_Benchmark \
+--fix-type bash \
+--profile xccdf_mil.disa.stig_profile_MAC-2_Sensitive \
+U_CAN_Ubuntu_22-04_LTS_V2R2_STIG_SCAP_1-3_Benchmark.xml \
 > openscap_NIST800171-fix.sh
+
 ```
 
-23\. Run the generated fix file in a roow environment.
+23\. Run the generated fix file in a root environment.
 ```bash
 sudo bash
 sh ./openscap_NIST800171-fix.sh
@@ -258,13 +261,13 @@ exit
 ```
 
 24\. Generate a "post fix" report to find what fixes require manual modifications
-- **Note**: XXXXXX is to be replaced by today's date in the YYMMDD format; ex 221019
 ```bash
 oscap xccdf eval \
 --profile xccdf_mil.disa.stig_profile_MAC-2_Sensitive \
 --fetch-remote-resources \
---report openscap_NIST800171_report_XXXXXX-post.html \
-U_CAN_Ubuntu_20-04_LTS_V1R8_STIG_SCAP_1-2_Benchmark.xml
+--report openscap_NIST800171_report_$(date +%Y%m%d)-post.html \
+U_CAN_Ubuntu_22-04_LTS_V2R2_STIG_SCAP_1-3_Benchmark.xml
+
 ```
 
 ## Manual Fixes
