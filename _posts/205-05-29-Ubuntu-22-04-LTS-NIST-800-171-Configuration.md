@@ -232,7 +232,6 @@ wget wget https://dl.dod.cyber.mil/wp-content/uploads/stigs/zip/U_CAN_Ubuntu_22-
 unzip U_CAN_Ubuntu_22-04_LTS_V2R2_STIG_SCAP_1-3_Benchmark.zip
 ```
 21\. Create a preliminary report and result file using the DoD STIG profile.
-- **Note**: XXXXXX is to be replaced by today's date in the YYMMDD format; ex 221019
 ```bash
 oscap xccdf eval \
 --profile xccdf_mil.disa.stig_profile_MAC-2_Sensitive \
