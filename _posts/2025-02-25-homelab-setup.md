@@ -56,8 +56,8 @@ I went with Homarr as my dashboard of choice.
 
 I found it provided the best mix of simplicity and functionality for my use case thus far. The integration with services like Proxmox is a plus.
 
-### NGINX Proxy Manger
-I have previously used Traefik as my reverse proxy, however I found myself recently switching to NGINX for it's simplicity.
+### NGINX Proxy Manager
+I have previously used Traefik as my reverse proxy, however I found myself recently switching to NGINX for its simplicity.
 
 I spin up new services for testing quite often, and I found nginx's web UI super useful in comparison to Traefiks configuration for my setup.
 
