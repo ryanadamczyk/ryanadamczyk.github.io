@@ -49,9 +49,6 @@ exclude:
   - node_modules
   - package*.json
 
-# Disqus (Set to your disqus id)
-disqus:         jekyll-tale
-
 # Build Settings
 build:
   safe: true  

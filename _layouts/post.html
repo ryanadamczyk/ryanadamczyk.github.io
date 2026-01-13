@@ -8,10 +8,6 @@ layout: default
   {{ content }}
 </div>
 
-{% if page.comments %}
-  {% include disqus_comments.html %}
-{% endif %}
-
 <nav class="pagination" aria-label="Post navigation">
   {% if page.next.url %}
     <a href="{{ page.next.url | prepend: site.baseurl }}" class="left arrow" aria-label="Previous post: {{ page.next.title }}">&#8592; Previous</a>
