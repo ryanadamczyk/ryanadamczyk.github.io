@@ -14,7 +14,7 @@ Goal: Improve site performance by optimizing images.
 - [x] Task: Convert existing post images in `assets/img/posts/` to WebP format (Verified already WebP)
 - [x] Task: Update image references in `_posts/` to point to the new WebP versions (Verified already WebP)
 - [x] Task: Optimize profile image and favicons [commit: 9f74d13]
-- [ ] Task: Conductor - User Manual Verification 'Asset Optimization' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Asset Optimization' (Protocol in workflow.md)
 
 ## Phase 3: Metadata Consistency
 Goal: Audit and fix post metadata for SEO and site features.
