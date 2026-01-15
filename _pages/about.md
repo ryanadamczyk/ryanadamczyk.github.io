@@ -7,7 +7,7 @@ permalink: /about/
 
 <div class="about-container">
   <div class="profile-image">
-    <img src="/assets/img/profile.jpeg" alt="Ryan Adamczyk" />
+    <img src="/assets/img/profile.webp" alt="Ryan Adamczyk" />
   </div>
   <div class="about-content">
     <p>Hi, I'm Ryan Adamczyk! <em>(pronounced Adam-Zack—it looks scarier than it is!)</em></p>
