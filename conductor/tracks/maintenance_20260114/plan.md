@@ -6,7 +6,7 @@ Goal: Ensure the project is running on the latest stable dependencies.
 - [x] Task: Audit and update Ruby gems in `Gemfile` and `tale.gemspec` [commit: 59e8d43]
     - [x] Run `bundle update`
     - [x] Verify local build with `bundle exec jekyll build`
-- [ ] Task: Conductor - User Manual Verification 'Environment & Dependencies' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Environment & Dependencies' (Protocol in workflow.md)
 
 ## Phase 2: Asset Optimization
 Goal: Improve site performance by optimizing images.
