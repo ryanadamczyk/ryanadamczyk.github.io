@@ -8,7 +8,7 @@ Goal: Ensure the project is running on the latest stable dependencies.
     - [x] Verify local build with `bundle exec jekyll build`
 - [x] Task: Conductor - User Manual Verification 'Environment & Dependencies' (Protocol in workflow.md)
 
-## Phase 2: Asset Optimization
+## Phase 2: Asset Optimization [checkpoint: 828dc97]
 Goal: Improve site performance by optimizing images.
 
 - [x] Task: Convert existing post images in `assets/img/posts/` to WebP format (Verified already WebP)
