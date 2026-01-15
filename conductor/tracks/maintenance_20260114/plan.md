@@ -3,7 +3,7 @@
 ## Phase 1: Environment & Dependencies
 Goal: Ensure the project is running on the latest stable dependencies.
 
-- [ ] Task: Audit and update Ruby gems in `Gemfile` and `tale.gemspec`
+- [~] Task: Audit and update Ruby gems in `Gemfile` and `tale.gemspec`
     - [ ] Run `bundle update`
     - [ ] Verify local build with `bundle exec jekyll build`
 - [ ] Task: Conductor - User Manual Verification 'Environment & Dependencies' (Protocol in workflow.md)
