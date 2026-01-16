@@ -2,6 +2,9 @@
 layout: post
 title: Ubuntu 20.04 LTS NIST 800-171 Configuration
 date: 2023-10-27 15:40 +0000
+description: "A guide to hardening Ubuntu 20.04 LTS for NIST 800-171 compliance, including SCAP scans and DoD STIG fixes."
+categories: ["Security", "Linux"]
+tags: ["ubuntu", "nist-800-171", "security", "compliance", "hardening"]
 ---
 
 # NIST 800-171

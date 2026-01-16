@@ -2,6 +2,9 @@
 layout: post
 title: How to use Microsoft Power Automate to create conditional Microsoft Forms
 date: 2024-09-12 12:00 +0000
+description: "Learn how to use Power Automate to create conditional Microsoft Forms with limited slot capacities."
+categories: ["Automation", "Microsoft"]
+tags: ["power-automate", "microsoft-forms", "sharepoint", "automation"]
 ---
 
 # Power Automate & Microsoft Forms

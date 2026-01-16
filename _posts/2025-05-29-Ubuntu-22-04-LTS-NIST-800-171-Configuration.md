@@ -2,6 +2,9 @@
 layout: post
 title: Ubuntu 22.04 LTS NIST 800-171 Configuration
 date: 2025-05-29 09:00 +0000
+description: "A detailed guide to hardening Ubuntu 22.04 LTS for NIST 800-171 compliance, including SCAP scans and DoD STIG fixes."
+categories: ["Security", "Linux"]
+tags: ["ubuntu", "nist-800-171", "security", "compliance", "hardening"]
 ---
 
 # NIST 800-171

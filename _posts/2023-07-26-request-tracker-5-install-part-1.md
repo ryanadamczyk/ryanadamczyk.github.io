@@ -2,6 +2,9 @@
 layout: post
 title: RT5 Installation Part 1 - Dependencies and Database
 date: 2023-07-26 15:40 +0000
+description: "A step-by-step guide to installing Request Tracker 5 on CentOS Stream 9. Part 1 covers dependencies and database setup."
+categories: ["Request Tracker", "Linux"]
+tags: ["rt5", "centos", "mysql", "sysadmin"]
 ---
 
 # Request Tracker
