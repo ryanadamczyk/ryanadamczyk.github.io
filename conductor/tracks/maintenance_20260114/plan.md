@@ -16,7 +16,7 @@ Goal: Improve site performance by optimizing images.
 - [x] Task: Optimize profile image and favicons [commit: 9f74d13]
 - [x] Task: Conductor - User Manual Verification 'Asset Optimization' (Protocol in workflow.md)
 
-## Phase 3: Metadata Consistency
+## Phase 3: Metadata Consistency [checkpoint: 2106ac9]
 Goal: Audit and fix post metadata for SEO and site features.
 
 - [x] Task: Define a standard set of required YAML front matter fields (title, date, tags, categories, description) [commit: 10d35e6]
