@@ -19,8 +19,8 @@ Goal: Improve site performance by optimizing images.
 ## Phase 3: Metadata Consistency
 Goal: Audit and fix post metadata for SEO and site features.
 
-- [ ] Task: Define a standard set of required YAML front matter fields (title, date, tags, categories, description)
-- [ ] Task: Audit all files in `_posts/` and add missing fields
-- [ ] Task: Ensure all tags and categories follow a consistent naming convention
-- [ ] Task: Run final build and validation with HTML-Proofer
+- [x] Task: Define a standard set of required YAML front matter fields (title, date, tags, categories, description) [commit: 10d35e6]
+- [x] Task: Audit all files in `_posts/` and add missing fields [commit: 10d35e6]
+- [x] Task: Ensure all tags and categories follow a consistent naming convention [commit: 10d35e6]
+- [x] Task: Run final build and validation with HTML-Proofer [commit: 10d35e6]
 - [ ] Task: Conductor - User Manual Verification 'Metadata Consistency' (Protocol in workflow.md)
