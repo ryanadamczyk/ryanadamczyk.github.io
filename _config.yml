@@ -1,7 +1,7 @@
 # Site settings
 title:          Ryan Adamczyk
 description:    "A personal blog and resume for Ryan Adamczyk"
-url:            "https://ryanadamczyk.github.io/"
+url:            "https://ryanadamczyk.github.io"
 baseurl: ""
 
 # Google Analytics
@@ -48,7 +48,3 @@ exclude:
   - rollup.config.js
   - node_modules
   - package*.json
-
-# Build Settings
-build:
-  safe: true  

@@ -24,12 +24,12 @@ layout: default
 </div>
 
 <!-- Pagination controls -->
-<nav class="pagination" aria-label="Post navigation">
-  {% if page.next.url %}
-    <a href="{{ page.next.url | prepend: site.baseurl }}" class="left arrow" aria-label="Previous post: {{ page.next.title }}">&#8592; Previous</a>
+<nav class="pagination" aria-label="Posts pagination">
+  {% if paginator.previous_page %}
+    <a href="{{ paginator.previous_page_path | prepend: site.baseurl }}" class="left arrow" aria-label="Newer posts">&#8592; Newer</a>
   {% endif %}
-  {% if page.previous.url %}
-    <a href="{{ page.previous.url | prepend: site.baseurl }}" class="right arrow" aria-label="Next post: {{ page.previous.title }}">Next &#8594;</a>
+  {% if paginator.next_page %}
+    <a href="{{ paginator.next_page_path | prepend: site.baseurl }}" class="right arrow" aria-label="Older posts">Older &#8594;</a>
   {% endif %}
 
   <a href="#main-content" class="top" aria-label="Back to top">Top</a>

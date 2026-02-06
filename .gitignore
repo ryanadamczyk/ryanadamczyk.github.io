@@ -1,5 +1,6 @@
 # Bundler cache
 .bundle
+.bundle-user
 vendor
 Gemfile.lock
 
