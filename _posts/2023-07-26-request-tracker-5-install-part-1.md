@@ -7,12 +7,15 @@ categories: ["Request Tracker", "Linux"]
 tags: ["rt5", "centos", "mysql", "sysadmin"]
 ---
 
-# Request Tracker
+> **Historical reference:** This 2023 walkthrough documents a specific RT 5.0.4 deployment path. Package repositories and security guidance have changed; review the current [Request Tracker documentation](https://docs.bestpractical.com/rt/latest/) before attempting an installation.
+{: .post-notice}
+
+## Request Tracker
 RT is an enterprise-grade issue tracking system. It allows organizations
 to keep track of what needs to get done, who is working on which tasks,
 what's already been done, and when tasks were (or weren't) completed.
 
-# Background
+## Background
 I work for Florida Atlantic University and was given a project to upgrade our Request Tracker software. Previously we were running RT 4.4.1 on a CentOS Stream 7 virtual machine. I upgraded us to RT 5.0.4 running on a CentOS Stream 9 VM. Throughout this process documentation on the internet was very slim, therefore I documented all steps I took to provide a guide for others in the future who wish to do a similar install.
 
 For the purposes of this tutorial I will be assuming that you are running CentOS Stream 9, or a similar RHEL distribution. 
@@ -22,7 +25,7 @@ I will also be splitting the tutorial into three parts:
 2. Request Tracker Installation and Configuration
 3. Web and Mail Server Configuration
 
-# Preface
+## Preface
 If you are upgrading from an existing installation of RT it is important to backup the existing database properly. This is done by running the following command:
 
 ```bash
@@ -31,7 +34,7 @@ If you are upgrading from an existing installation of RT it is important to back
     | gzip > rt-`date +%Y%m%d`.sql.gz
 ```
 
-# Upgrade and Install Dependencies
+## Upgrade and Install Dependencies
 ```bash
 sudo yum update && upgrade
 sudo yum install epel-release
@@ -44,7 +47,7 @@ sudo sed -i~ '/^SELINUX=/ c SELINUX=disabled' /etc/selinux/config
 sudo setenforce 0
 ```
 
-# Install Database
+## Install Database
 For my installation I went with MySQL, however you can use any other preferred database for this step.
 
 ```bash

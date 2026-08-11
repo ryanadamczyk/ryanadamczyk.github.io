@@ -4,6 +4,7 @@
 
   {% assign page_title = page.title | default: site.title %}
   {% assign meta_description = page.description | default: page.excerpt | default: site.description | strip_html | strip_newlines | truncate: 160 %}
+  {% assign social_image = page.image | default: site.social_image | absolute_url %}
   <title>{{ page_title }}{% if page_title != site.title %} | {{ site.title }}{% endif %}</title>
   <meta name="description" content="{{ meta_description }}">
   <meta name="author" content="{{ site.author.name }}">
@@ -12,14 +13,17 @@
   <meta property="og:description" content="{{ meta_description }}">
   <meta property="og:url" content="{{ page.url | absolute_url }}">
   <meta property="og:site_name" content="{{ site.title }}">
+  <meta property="og:image" content="{{ social_image }}">
+  <meta property="og:image:alt" content="Ryan Adamczyk — Implementation-minded systems professional">
   {% if page.date %}
   <meta property="og:type" content="article">
   {% else %}
   <meta property="og:type" content="website">
   {% endif %}
-  <meta name="twitter:card" content="summary">
+  <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{{ page_title }}">
   <meta name="twitter:description" content="{{ meta_description }}">
+  <meta name="twitter:image" content="{{ social_image }}">
 
   <!-- CSS -->
   <link rel="stylesheet" href="{{ "/assets/main.css" | relative_url }}">

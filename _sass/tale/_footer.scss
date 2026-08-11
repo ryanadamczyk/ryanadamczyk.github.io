@@ -41,7 +41,7 @@ footer {
         }
   
         a {
-          color: $default-tint;
+          color: $white;
           text-decoration: underline;
           
           &:hover {
@@ -67,7 +67,7 @@ footer {
         }
   
         .back-to-top {
-          color: $default-tint;
+          color: $white;
           text-decoration: underline;
           
           .arrow {
@@ -78,8 +78,14 @@ footer {
           }
           
           &:hover {
-            color: $white;
+            color: $default-tint;
           }
+        }
+
+        @media (max-width: 600px) {
+          flex-direction: column;
+          gap: .75rem;
+          text-align: center;
         }
       }
     }

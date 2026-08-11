@@ -1,8 +1,9 @@
 # Site settings
 title:          Ryan Adamczyk
 description:    "A personal blog and resume for Ryan Adamczyk"
-url:            "https://ryanadamczyk.github.io"
+url:            "https://www.radamczyk.com"
 baseurl: ""
+social_image:    "/assets/img/social-share.png"
 
 # Google Analytics
 google_analytics: 	G-NNPY63T2ND
@@ -10,7 +11,7 @@ google_analytics: 	G-NNPY63T2ND
 # Author
 author:
   name:         Ryan Adamczyk
-  url:          https://radamczyk.com
+  url:          https://www.radamczyk.com
   email:        me@ryanadamczyk.com
 
 # Build settings
@@ -32,6 +33,7 @@ plugins:
   - jekyll-feed
   - jekyll-paginate
   - jekyll-seo-tag 
+  - jekyll-sitemap
 
 # Permalinks
 permalink:      /:year-:month-:day/:title

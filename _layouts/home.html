@@ -3,14 +3,40 @@ layout: default
 ---
 
 <div class="intro-text">
-  <h1>Hello. I'm Ryan.</h1>
-  <p>I'm passionate about open-source technology, self-hosting, and automation.</p>
-  <p>Professionally, I have experience in systems administration, business analytics, real estate management, and help desk.</p>
-  <p>As a HomeLab enthusiast, I'm constantly exploring and learning about areas of interest in tech.</p>
+  <p class="intro-eyebrow">Ryan Adamczyk</p>
+  <h1>Implementation-minded systems professional working at the intersection of infrastructure, automation, and business operations.</h1>
+  <p class="intro-lede">I bring together hands-on systems administration, operational analysis, and technical documentation to make complex work more dependable.</p>
 </div>
 
+<section class="featured-work" aria-labelledby="featured-work-title">
+  <div class="section-heading">
+    <p class="section-eyebrow">Selected work</p>
+    <h2 id="featured-work-title">Practical systems work, documented.</h2>
+  </div>
+  <div class="featured-work-grid">
+    <a class="featured-work-card" href="{{ '/2025-02-25/homelab-setup' | relative_url }}">
+      <span class="featured-work-kind">Infrastructure</span>
+      <h3>Personal Infrastructure Homelab</h3>
+      <p>Hands-on work with Proxmox, Docker-based services, private DNS, remote access, and operational documentation.</p>
+      <span class="featured-work-link">Explore the homelab <span aria-hidden="true">→</span></span>
+    </a>
+    <a class="featured-work-card" href="{{ '/2025-05-29/Ubuntu-22-04-LTS-NIST-800-171-Configuration' | relative_url }}">
+      <span class="featured-work-kind">Secure configuration</span>
+      <h3>Ubuntu NIST 800-171 System Configuration</h3>
+      <p>An FAU-assigned Linux configuration project documenting a security-focused system-hardening workflow.</p>
+      <span class="featured-work-link">Read the project <span aria-hidden="true">→</span></span>
+    </a>
+    <a class="featured-work-card" href="{{ '/2024-09-12/powerautomate-microsoft-form' | relative_url }}">
+      <span class="featured-work-kind">Automation</span>
+      <h3>Power Automate + SharePoint Workflow</h3>
+      <p>A capacity-aware Microsoft Forms workflow that combines automation, data storage, confirmations, and exception handling.</p>
+      <span class="featured-work-link">See the workflow <span aria-hidden="true">→</span></span>
+    </a>
+  </div>
+</section>
+
 <!-- Catalogue listing -->
-<h1 class="posts-heading">Latest Blog Posts</h1>
+<h2 class="posts-heading">Latest Writing</h2>
 <div class="catalogue">
   {% for post in site.posts %}
     {% if post.sticky %}

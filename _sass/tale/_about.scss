@@ -12,8 +12,9 @@
   
     .profile-image {
       flex-shrink: 0;
-      width: 250px;
-      height: 250px;
+      width: min(250px, 72vw);
+      aspect-ratio: 1;
+      height: auto;
       border-radius: 50%;
       overflow: hidden;
       

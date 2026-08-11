@@ -14,12 +14,8 @@ body {
 
 html {
   font-family: $serif-primary;
-  font-size: 14px;
+  font-size: 16px;
   overflow-y: scroll;
-
-  @media (min-width: 600px) {
-    font-size: 16px;
-  }
 }
 
 body {
@@ -40,6 +36,29 @@ h6 {
 a {
   color: $white;
   text-decoration: none;
+}
+
+:focus-visible {
+  outline: 3px solid $default-tint;
+  outline-offset: 3px;
+}
+
+.skip-link {
+  background: $white;
+  color: $background-color;
+  font-family: $sans-serif;
+  font-weight: 700;
+  left: 1rem;
+  padding: .6rem .9rem;
+  position: fixed;
+  top: 1rem;
+  transform: translateY(-200%);
+  transition: transform .15s ease;
+  z-index: 10;
+
+  &:focus {
+    transform: translateY(0);
+  }
 }
 
 blockquote {

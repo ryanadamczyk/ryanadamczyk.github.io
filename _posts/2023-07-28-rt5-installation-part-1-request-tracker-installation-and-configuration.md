@@ -7,12 +7,15 @@ categories: ["Request Tracker", "Linux"]
 tags: ["rt5", "centos", "sysadmin", "perl"]
 ---
 
-# Request Tracker
+> **Historical reference:** This 2023 walkthrough documents a specific RT 5.0.4 deployment path. Package repositories and security guidance have changed; review the current [Request Tracker documentation](https://docs.bestpractical.com/rt/latest/) before attempting an installation.
+{: .post-notice}
+
+## Request Tracker
 RT is an enterprise-grade issue tracking system. It allows organizations
 to keep track of what needs to get done, who is working on which tasks,
 what's already been done, and when tasks were (or weren't) completed.
 
-# Preface
+## Preface
 Previously we learned how to update our OS, install and configure our database, and ensure we have all dependencies needed for the installation of Request Tracker. For my installation I am using CentOS Stream 9, MySQL 5.7 with InnoDB support, Request Tracker 5.0.4, and Apache 2. 
 
 After this tutorial we will have a working installation of Request Tracker 5.0.4 with MySQL 5.7 with InnoDB support. In the last step of this tutorial we will install and configure our web and mail server:
@@ -23,7 +26,7 @@ After this tutorial we will have a working installation of Request Tracker 5.0.4
 
 3.Web and Mail Server Configuration
 
-# Download and install RT5
+## Download and install RT5
 First we will download RT 5.0.4.
 ```bash
 wget https://download.bestpractical.com/pub/rt/release/rt-5.0.4.tar.gz
@@ -43,10 +46,10 @@ Now we will test our dependencies and install.
 sudo make testdeps
 sudo make install
 ```
-# Create new database, or import old database and upgrade
-## New Database
+## Create new database, or import old database and upgrade
+### New Database
 
-## Import RT4 database and upgrade
+### Import RT4 database and upgrade
 We will install necessary dependencies, create our rt5 database, and import our old database.
 ```bash
 sudo yum install cifs-utils
@@ -84,7 +87,7 @@ After running upgrade-database click space twice, this step will take a while de
 ```bash
 sudo rm -rf /opt/rt5/var/mason_data/obj
 ```
-# Configure RT5
+## Configure RT5
 Now we will configure RT5 for our own purposes.
 ```bash
 sudo nano /opt/rt5/etc/RT_SiteConfig.pm
@@ -95,7 +98,7 @@ sudo /opt/rt5/sbin/rt-setup-fulltext-index --noask
 ```
 The end of the process will output some RT configuration that looks like this:
 ```bash
-### EXAMPLE OUTPUT ONLY - Don't use this directly!
+#### EXAMPLE OUTPUT ONLY - Don't use this directly!
 		Set( %FullTextSearch,
 			Enable     => 1,
 			Indexed    => 1,

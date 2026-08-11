@@ -7,12 +7,15 @@ categories: ["Security", "Linux"]
 tags: ["ubuntu", "nist-800-171", "security", "compliance", "hardening"]
 ---
 
-# NIST 800-171
+> **Scope note:** This walkthrough documents a version-specific, FAU-assigned configuration project. It does not demonstrate organizational NIST SP 800-171 compliance. Validate the current STIG, tooling, operating-system support, and your organization’s requirements before using any step in production.
+{: .post-notice}
+
+## NIST 800-171
 NIST Special Publication 800-171, titled "Protecting Controlled Unclassified Information in Non-Federal Systems and Organizations," is a document published by the National Institute of Standards and Technology (NIST), aimed at standardizing the way non-federal entities protect sensitive but unclassified information. 
 
 The publication outlines 14 families of security requirements that aim to secure Controlled Unclassified Information (CUI) when it is stored, processed, or transmitted by non-federal systems and organizations.
 
-## 14 Families of Security Requirements
+### 14 Families of Security Requirements
 - Access Control
     - Restricting access to CUI through the enforcement of access permissions.
 - Awareness and Training
@@ -42,7 +45,7 @@ The publication outlines 14 families of security requirements that aim to secure
 - System and Information Integrity
     - Identifying, reporting, and correcting information and information system flaws in a timely manner.
 
-## Overview of the Build Steps
+### Overview of the Build Steps
 1. Install fresh Ubuntu 22.04 LTS system
 2. Preconfigure the system for compliance
 3. Run SCAP agent against OS
@@ -51,7 +54,7 @@ The publication outlines 14 families of security requirements that aim to secure
 6. Fix the non-compliant issues
 7. Repeat steps 3 through 6 as needed
 
-## Fresh Ubuntu 22.04 LTS Installation
+### Fresh Ubuntu 22.04 LTS Installation
 1\. Install Ubuntu 22.04 via DVD, ISO, or USB
 
 ![ubuntu_install_1](/assets/img/posts/ubuntu_install_1.webp)
@@ -101,7 +104,7 @@ The publication outlines 14 families of security requirements that aim to secure
 
 ![ubuntu_install_13](/assets/img/posts/ubuntu_install_13.webp)
 
-## Prep System for Hardening
+### Prep System for Hardening
 13\. Click the **Show Applications** button on the lower left and type in **Terminal** to start the application.
 
 ![ubuntu_hardening_1](/assets/img/posts/ubuntu_hardening_1.webp)
@@ -147,7 +150,7 @@ sudo -u gdm gsettings set org.gnome.desktop.media-handling automount false
 exit
 ```
 
-## DoD STIG Based Fixes
+### DoD STIG Based Fixes
 - Fixes from v18.04
     - rule_sysctl_fs_suid_dumpable
     - rule_sysctl_kernel_randomize_va_space
@@ -226,12 +229,12 @@ sudo find /var/log -perm /137 -type f -exec chmod 640 '{}' \;
 sudo chmod 0750 /var/log
 ```
 
-## OpenSCAP Configuration and Fix
+### OpenSCAP Configuration and Fix
 20\. Create a folder to hold the guides and configuration scripts. Then, download the Ubuntu SCAP guide from the DoD website. Unzip the downloaded file.
 ```bash
 mkdir openscap
 cd openscap
-wget wget https://dl.dod.cyber.mil/wp-content/uploads/stigs/zip/U_CAN_Ubuntu_22-04_LTS_V2R2_STIG_SCAP_1-3_Benchmark.zip
+wget https://dl.dod.cyber.mil/wp-content/uploads/stigs/zip/U_CAN_Ubuntu_22-04_LTS_V2R2_STIG_SCAP_1-3_Benchmark.zip
 unzip U_CAN_Ubuntu_22-04_LTS_V2R2_STIG_SCAP_1-3_Benchmark.zip
 ```
 21\. Create a preliminary report and result file using the DoD STIG profile.
@@ -272,7 +275,7 @@ U_CAN_Ubuntu_22-04_LTS_V2R2_STIG_SCAP_1-3_Benchmark.xml
 
 ```
 
-## Manual Fixes
+### Manual Fixes
 The “openscap_NIST800171_report_XXXXXX-post.html” file that is generated is a HTML file that can be viewed in Mozilla Firefox or Google Chromium. 
 
 It contains the results of the security scan, states what changes need to be made, and how to make them. 
@@ -287,7 +290,7 @@ The section **Remediation Description** explains what changes need to be made to
 
 - Any future configurations of the system require that the security scan is again completed from **Step 24**
 
-## Locking GRUB Boot Screen
+### Locking GRUB Boot Screen
 It is important to set a password for the GRUB boot screen to prevent changes to the boot environment
     - **Note**: The following commands must be run in a root environment due to the file redirection required.
 
@@ -316,5 +319,5 @@ It is important to set a password for the GRUB boot screen to prevent changes to
     update-grubb
     ```
 
-## Congratulations
-You have now successfully configured an Ubuntu 22.04 machine to be NIST 800-171 compliant!
+### Congratulations
+You have completed this configuration walkthrough. Treat the result as a starting point for validation, not evidence of NIST SP 800-171 compliance.

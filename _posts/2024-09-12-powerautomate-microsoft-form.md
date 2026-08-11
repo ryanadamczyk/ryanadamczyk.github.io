@@ -7,7 +7,7 @@ categories: ["Automation", "Microsoft"]
 tags: ["power-automate", "microsoft-forms", "sharepoint", "automation"]
 ---
 
-# Power Automate & Microsoft Forms
+## Power Automate & Microsoft Forms
 Power Automate can be a very powerful tool when the situation is appropriate.  
 
 I recently found myself needing to create a Microsoft form that collects as follows:  
@@ -18,7 +18,7 @@ The catch in my scenario however, is that for 4 of the time slots I wanted to en
 
 You would assume this might already be a feature in Microsoft Forms, however you would be sadly mistaken. I discovered that the only way to achieve this is by utilizing Power Automate.
 
-## Goal of the Power Automate Flow
+### Goal of the Power Automate Flow
 Once I discovered I would have to be using Power Automate I decided I wanted to learn as much as possible and add lots of functionality to the form.  
 Therefore my goals for the flow were as follows:
 - Gather the users email and full name
@@ -27,7 +27,7 @@ Therefore my goals for the flow were as follows:
 - Send a meeting invite to the user for their desired time as confirmation
 - Send an email to the user if their desired time was full
 
-## Beginning Requirements
+### Beginning Requirements
 In order for this flow to function properly you will first need to set up a couple things.  
 
 First you must create the desired Microsoft Form, for my case I created a form and added a question for Full Name and a question asking to select one of 8 time slots.  
@@ -40,7 +40,7 @@ This list must contain matching columns to the form, so columns should look as f
     - Ensure that you added matching time slot sections within this column
 - Response Count
 
-## Flow Structure
+### Flow Structure
 Now by no means is this flow likely the most efficient way to do this task, however this was how I got it to work for my functionality. In the future I will look to discover ways to optimize my flow for efficiency.  
 
 With that being said, here is the flows structures as well as details for each flow action:  
@@ -163,14 +163,14 @@ With that being said, here is the flows structures as well as details for each f
             - Subject: _____ Time Slot Full
             - Body: Sadly the time slot you selected 'SelectedTimeSlot' is already full, please select a different time slot
 
-## Flow Completion
+### Flow Completion
 You should now have a functional flow that triggers upon form submission, verifies the response against SharePoint list data, inserts the data into the SharePoint list, and sends a confirmation to the user.   
 
 Here is a rough screenshot of what the ending flow should look like:  
 
 ![pa_flow](/assets/img/posts/pa_flow.webp)
 
-## Closing Remarks
+### Closing Remarks
 This is just one example of how you can utilize Power Automate with Microsoft Forms.  
 
 If you’re not collecting time slot data from users, you can adjust the variables accordingly, but the core logic and flow will remain consistent.

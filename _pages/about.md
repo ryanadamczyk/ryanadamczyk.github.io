@@ -1,6 +1,8 @@
 ---
 layout: about
 permalink: /about/
+title: About
+description: "Implementation-minded systems professional with experience across infrastructure, automation, and business operations."
 ---
 
 # **About me**
@@ -12,12 +14,12 @@ permalink: /about/
   <div class="about-content">
     <p>Hi, I'm Ryan Adamczyk! <em>(pronounced Adam-Zack—it looks scarier than it is!)</em></p>
 
-    <p>Born and raised in Florida, I spent most of my time in the North before heading South for college. I earned a <strong>B.S. in Management Information Systems</strong> and later an <strong>MSc in IT & Management</strong> from Florida Atlantic University, completing an accelerated master's program. While at FAU, I received a grant to earn my <strong>CompTIA Security+</strong> certification.</p>
+    <p>Born and raised in Florida, I spent most of my time in the North before heading South for college. I earned a <strong>B.S. in Management Information Systems</strong> and later an <strong>MSc in IT & Management</strong> from Florida Atlantic University, completing an accelerated master's program.</p>
 
     <p>For two years, I worked as a Junior Systems Administrator at FAU's College of Engineering & Computer Science, gaining hands-on experience and leading solo projects that deepened my expertise in systems administration.</p>
 
-    <p>Now, I'm back in North Florida, working at FIS, a Fortune 500 fintech company, on their Global Real Estate team.</p>
+    <p>Today, I work as a <strong>Real Estate Lease Admin Analyst II</strong> at FIS, where I support recurring billing operations, reconciliation, exception resolution, and data-quality work across North America and India.</p>
 
-    <p>I'm a HomeLab enthusiast passionate about self-hosting, open-source software, and technology—always happy to chat about the latest in the space!</p>
+    <p>I'm a HomeLab enthusiast passionate about self-hosting, open-source software, and technology—always happy to chat about the latest in the space.</p>
   </div>
 </div>
