@@ -8,14 +8,21 @@ This website was built using the Jekyll theme as base with lots of custom SCSS [
 
 ### Prerequisites
 
-- Ruby `3.1.3` (see `.ruby-version`)
+- Ruby `4.0.6` (see `.ruby-version`)
 - Bundler `2.x`
 
-If your shell is using the macOS system Ruby, install and use Ruby `3.1.3` first:
+On macOS with Homebrew, install Ruby and ensure Homebrew's bin directory appears
+before `/usr/bin` in your shell `PATH`:
 
 ```bash
-/opt/homebrew/opt/ruby-install/bin/ruby-install ruby 3.1.3 --install-dir ~/.rubies/ruby-3.1.3 --cleanup --no-install-deps
-export PATH="$HOME/.rubies/ruby-3.1.3/bin:$PATH"
+brew install ruby
+export PATH="/opt/homebrew/bin:$PATH"
+```
+
+Confirm the active interpreter matches the project before installing dependencies:
+
+```bash
+ruby --version
 ```
 
 ### Install dependencies
