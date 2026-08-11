@@ -1,8 +1,0 @@
-{
-  "track_id": "maintenance_20260114",
-  "type": "feature",
-  "status": "new",
-  "created_at": "2026-01-14T22:58:00Z",
-  "updated_at": "2026-01-14T22:58:00Z",
-  "description": "Project Maintenance and Optimization: Update dependencies, optimize existing assets (images to WebP), and ensure metadata consistency across all blog posts."
-}

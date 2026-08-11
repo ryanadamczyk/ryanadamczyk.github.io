@@ -5,7 +5,6 @@ PATH
       jekyll (~> 4.0)
       jekyll-feed (~> 0.10)
       jekyll-paginate (~> 1.1)
-      jekyll-seo-tag (~> 2.5)
       jekyll-sitemap (~> 1.4)
 
 GEM
@@ -86,8 +85,6 @@ GEM
     jekyll-paginate (1.1.0)
     jekyll-sass-converter (3.1.0)
       sass-embedded (~> 1.75)
-    jekyll-seo-tag (2.8.0)
-      jekyll (>= 3.8, < 5.0)
     jekyll-sitemap (1.4.0)
       jekyll (>= 3.7, < 5.0)
     jekyll-watch (2.2.1)
