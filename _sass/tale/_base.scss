@@ -43,6 +43,11 @@ a {
   outline-offset: 3px;
 }
 
+header a:focus-visible,
+footer a:focus-visible {
+  outline-color: $white;
+}
+
 .skip-link {
   background: $white;
   color: $background-color;
@@ -78,6 +83,7 @@ blockquote {
 
 img {
   display: block;
+  height: auto;
   margin: 0 0 1rem;
   max-width: 100%;
 }

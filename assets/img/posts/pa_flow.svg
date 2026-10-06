@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1320" viewBox="0 0 1200 1320" role="img" aria-labelledby="title desc">
+<title id="title">Microsoft Forms registration workflow</title>
+<desc id="desc">A response triggers data retrieval, variable initialization, time formatting, capacity selection, and counting matching SharePoint entries. If the count is below capacity, update counts, create a reservation, and invite the responder to a calendar event. Otherwise, the original flow sends a full-slot notification to the flow owner.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M0 0l10 5-10 5z" fill="#b8b8b8"/></marker></defs>
+<rect width="1200" height="1320" rx="20" fill="#1d1d1d"/>
+<text x="600" y="58" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700" fill="#fff">Microsoft Forms registration workflow</text>
+<text x="600" y="94" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="400" fill="#b8b8b8">Overview of the documented 2024 flow</text>
+<rect x="220" y="132" width="760" height="98" rx="12" fill="#2d2d2d" stroke="#83c5ff" stroke-width="2"/>
+<text x="600" y="170" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700" fill="#fff">Form submitted</text>
+<text x="600" y="202" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" fill="#d5d5d5">Retrieve response details</text>
+<path d="M600 230 V250" fill="none" stroke="#b8b8b8" stroke-width="3" marker-end="url(#arrow)"/>
+<rect x="220" y="260" width="760" height="98" rx="12" fill="#2d2d2d" stroke="#83c5ff" stroke-width="2"/>
+<text x="600" y="298" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700" fill="#fff">Initialize variables</text>
+<text x="600" y="330" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" fill="#d5d5d5">Selected slot, count, capacity, start and end times</text>
+<path d="M600 358 V378" fill="none" stroke="#b8b8b8" stroke-width="3" marker-end="url(#arrow)"/>
+<rect x="220" y="388" width="760" height="98" rx="12" fill="#2d2d2d" stroke="#83c5ff" stroke-width="2"/>
+<text x="600" y="426" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700" fill="#fff">Format the selected time</text>
+<text x="600" y="458" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" fill="#d5d5d5">Split the slot and prepare calendar timestamps</text>
+<path d="M600 486 V506" fill="none" stroke="#b8b8b8" stroke-width="3" marker-end="url(#arrow)"/>
+<rect x="220" y="516" width="760" height="98" rx="12" fill="#2d2d2d" stroke="#83c5ff" stroke-width="2"/>
+<text x="600" y="554" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700" fill="#fff">Choose the slot capacity</text>
+<text x="600" y="586" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" fill="#d5d5d5">Set the maximum to 7 or 14</text>
+<path d="M600 614 V634" fill="none" stroke="#b8b8b8" stroke-width="3" marker-end="url(#arrow)"/>
+<rect x="220" y="644" width="760" height="98" rx="12" fill="#2d2d2d" stroke="#83c5ff" stroke-width="2"/>
+<text x="600" y="682" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700" fill="#fff">Read SharePoint registrations</text>
+<text x="600" y="714" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" fill="#d5d5d5">Count entries matching the selected slot</text>
+<path d="M600 742 V784" fill="none" stroke="#b8b8b8" stroke-width="3" marker-end="url(#arrow)"/>
+<path d="M600 792L810 872 600 952 390 872z" fill="#2d2d2d" stroke="#ffb86c" stroke-width="2"/>
+<text x="600" y="861" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700" fill="#fff">Count below</text>
+<text x="600" y="896" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700" fill="#fff">the slot capacity?</text>
+<path d="M390 872 H290 V1010" fill="none" stroke="#b8b8b8" stroke-width="3" marker-end="url(#arrow)"/>
+<text x="304" y="850" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="700" fill="#9bd87c">YES</text>
+<path d="M810 872 H910 V1010" fill="none" stroke="#b8b8b8" stroke-width="3" marker-end="url(#arrow)"/>
+<text x="896" y="850" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="700" fill="#ffb86c">NO</text>
+<rect x="60" y="1018" width="460" height="98" rx="12" fill="#2d2d2d" stroke="#9bd87c" stroke-width="2"/>
+<text x="290" y="1056" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700" fill="#fff">Save the registration</text>
+<text x="290" y="1088" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" fill="#d5d5d5">Update counts; create an item</text>
+<path d="M290 1116 V1146" fill="none" stroke="#b8b8b8" stroke-width="3" marker-end="url(#arrow)"/>
+<rect x="60" y="1154" width="460" height="98" rx="12" fill="#2d2d2d" stroke="#9bd87c" stroke-width="2"/>
+<text x="290" y="1192" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700" fill="#fff">Create a calendar event</text>
+<text x="290" y="1224" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" fill="#d5d5d5">Invite responder to the event</text>
+<rect x="680" y="1018" width="460" height="98" rx="12" fill="#2d2d2d" stroke="#ffb86c" stroke-width="2"/>
+<text x="910" y="1056" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700" fill="#fff">Notify the flow owner</text>
+<text x="910" y="1088" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" fill="#d5d5d5">Original full-slot action</text>
+<text x="600" y="1293" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#b8b8b8">Action settings and expressions are explained in the article.</text>
+</svg>

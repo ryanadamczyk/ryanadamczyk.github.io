@@ -83,6 +83,12 @@ if (!window.copyCodeInitialized) {
     }
 
     // Add copy buttons to all pre elements
-    document.querySelectorAll('pre').forEach(addCopyButton);
+    document.querySelectorAll('pre').forEach(function(codeBlock) {
+      // Make long examples reachable for keyboard scrolling.
+      codeBlock.tabIndex = 0;
+      codeBlock.setAttribute('role', 'region');
+      codeBlock.setAttribute('aria-label', 'Code example');
+      addCopyButton(codeBlock);
+    });
   });
 }

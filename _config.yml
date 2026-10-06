@@ -3,7 +3,18 @@ title:          Ryan Adamczyk
 description:    "A personal blog and resume for Ryan Adamczyk"
 url:            "https://www.radamczyk.com"
 baseurl: ""
-social_image:    "/assets/img/social-share.png"
+social_image:    "/assets/img/social-share.jpg"
+
+# Meta CSP fallback for GitHub Pages. Framing protection requires an HTTP header;
+# see README.md for the delivery configuration.
+content_security_policy: >-
+  default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self';
+  script-src 'self' https://www.googletagmanager.com;
+  style-src 'self' https://fonts.googleapis.com;
+  font-src 'self' https://fonts.gstatic.com;
+  img-src 'self' data: https://www.googletagmanager.com https://*.google-analytics.com;
+  connect-src 'self' https://www.googletagmanager.com https://*.google-analytics.com https://*.google.com;
+  frame-src 'none';
 
 # Google Analytics
 google_analytics: 	G-NNPY63T2ND

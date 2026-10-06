@@ -2,7 +2,8 @@
 layout: post
 title: How to use Microsoft Power Automate to create conditional Microsoft Forms
 date: 2024-09-12 12:00 +0000
-description: "Learn how to use Power Automate to create conditional Microsoft Forms with limited slot capacities."
+last_modified_at: 2026-10-06
+description: "A Microsoft Forms registration workflow connecting SharePoint capacity checks with Power Automate and meeting invitations."
 categories: ["Automation", "Microsoft"]
 tags: ["power-automate", "microsoft-forms", "sharepoint", "automation"]
 ---
@@ -166,9 +167,14 @@ With that being said, here is the flows structures as well as details for each f
 ### Flow Completion
 You should now have a functional flow that triggers upon form submission, verifies the response against SharePoint list data, inserts the data into the SharePoint list, and sends a confirmation to the user.   
 
-Here is a rough screenshot of what the ending flow should look like:  
+The diagram below summarizes the documented flow. The original full-slot action notifies the flow owner; the action settings and expressions are listed above.
 
-![pa_flow](/assets/img/posts/pa_flow.webp)
+<figure>
+  <div class="workflow-diagram" tabindex="0" role="region" aria-label="Registration flow diagram; scroll horizontally to view on smaller screens">
+    {% include article_image.html src='/assets/img/posts/pa_flow.svg' alt='Forms responses are formatted and checked against SharePoint registrations. Available slots create reservations and meeting invitations; full slots notify the flow owner.' width=1200 height=1320 %}
+  </div>
+  <figcaption>Overview of the documented 2024 registration flow. <a href="{{ '/assets/img/posts/pa_flow.svg' | relative_url }}">Open the full-size diagram</a>.</figcaption>
+</figure>
 
 ### Closing Remarks
 This is just one example of how you can utilize Power Automate with Microsoft Forms.  

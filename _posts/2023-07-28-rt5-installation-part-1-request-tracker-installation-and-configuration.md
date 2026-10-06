@@ -2,7 +2,8 @@
 layout: post
 title: RT5 Installation Part 2 - Request Tracker Installation and Configuration
 date: 2023-07-28 21:35 +0000
-description: "Part 2 of the Request Tracker 5 installation guide. Configuring the RT5 application and database connection."
+last_modified_at: 2026-10-06
+description: "Notes from a 2023 Request Tracker 5 migration: application setup, database import, and configuration."
 categories: ["Request Tracker", "Linux"]
 tags: ["rt5", "centos", "sysadmin", "perl"]
 ---

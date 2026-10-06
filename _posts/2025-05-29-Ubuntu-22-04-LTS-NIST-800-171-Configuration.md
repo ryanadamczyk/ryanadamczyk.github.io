@@ -2,9 +2,10 @@
 layout: post
 title: Ubuntu 22.04 LTS NIST 800-171 Configuration
 date: 2025-05-29 09:00 +0000
-description: "A detailed guide to hardening Ubuntu 22.04 LTS for NIST 800-171 compliance, including SCAP scans and DoD STIG fixes."
+last_modified_at: 2026-10-06
+description: "An FAU Linux hardening project documenting Ubuntu 22.04 configuration, STIG-based settings, and SCAP reports."
 categories: ["Security", "Linux"]
-tags: ["ubuntu", "nist-800-171", "security", "compliance", "hardening"]
+tags: ["ubuntu", "nist-800-171", "security", "hardening"]
 ---
 
 > **Scope note:** This walkthrough documents a version-specific, FAU-assigned configuration project. It does not demonstrate organizational NIST SP 800-171 compliance. Validate the current STIG, tooling, operating-system support, and your organization’s requirements before using any step in production.
@@ -15,7 +16,7 @@ NIST Special Publication 800-171, titled "Protecting Controlled Unclassified Inf
 
 The publication outlines 14 families of security requirements that aim to secure Controlled Unclassified Information (CUI) when it is stored, processed, or transmitted by non-federal systems and organizations.
 
-### 14 Families of Security Requirements
+### 14 Families of Security Requirements (Revision 2)
 - Access Control
     - Restricting access to CUI through the enforcement of access permissions.
 - Awareness and Training
@@ -47,67 +48,69 @@ The publication outlines 14 families of security requirements that aim to secure
 
 ### Overview of the Build Steps
 1. Install fresh Ubuntu 22.04 LTS system
-2. Preconfigure the system for compliance
+2. Preconfigure the system for security checks
 3. Run SCAP agent against OS
-4. Collect results to compare and define steps needed for compliance
+4. Collect results to identify gaps in the selected security baseline
 5. Run SCAP for verification
-6. Fix the non-compliant issues
+6. Address findings from the selected security baseline
 7. Repeat steps 3 through 6 as needed
 
 ### Fresh Ubuntu 22.04 LTS Installation
 1\. Install Ubuntu 22.04 via DVD, ISO, or USB
 
-![ubuntu_install_1](/assets/img/posts/ubuntu_install_1.webp)
+{% include article_image.html src='/assets/img/posts/ubuntu_install_1.webp' alt='Ubuntu installer welcome screen' width=623 height=518 %}
 
-![ubuntu_install_2](/assets/img/posts/ubuntu_install_2.webp)
+{% include article_image.html src='/assets/img/posts/ubuntu_install_2.webp' alt='Ubuntu installer keyboard layout settings' width=623 height=519 %}
 
 2\. If an internet connection is available, choose **Download updates while installing Ubuntu**. Also choose **Install third-party software for graphics...** if specialized drivers are needed for hardware.
 
-![ubuntu_install_3](/assets/img/posts/ubuntu_install_3.webp)
+{% include article_image.html src='/assets/img/posts/ubuntu_install_3.webp' alt='Ubuntu installer updates and software options' width=623 height=518 %}
 
 3\. If there is only one drive in the system, use the default setting to configure the drive and choose **Advanced Features** to enable LVM with encryption. Otherwise, configure the partitions and encrypted volumes under **Something Else**.
 
-![ubuntu_install_4](/assets/img/posts/ubuntu_install_4.webp)
+{% include article_image.html src='/assets/img/posts/ubuntu_install_4.webp' alt='Ubuntu installer disk layout and advanced storage options' width=623 height=518 %}
 
 4\. In the LVM/Encryption screen, enter a very long complex password that will be used to encrypt the drive. The password should be at least 16 characters long. Store the password in a secured place.
     - **Note**: Once TPM boot is configured, the encryption password will only be used for emergency recovery.
 
-![ubuntu_install_5](/assets/img/posts/ubuntu_install_5.webp)
+{% include article_image.html src='/assets/img/posts/ubuntu_install_5.webp' alt='Ubuntu installer disk encryption settings' width=990 height=838 %}
 
-5\. Choose **Install Now** once storage is configured. Next, choose **Continue** to write changes to disks.![ubuntu_install_6](/assets/img/posts/ubuntu_install_6.webp)    
+5\. Choose **Install Now** once storage is configured. Next, choose **Continue** to write changes to disks.
+
+{% include article_image.html src='/assets/img/posts/ubuntu_install_6.webp' alt='Ubuntu installer confirmation of changes to disk partitions' width=868 height=330 %}
 
 6\. Choose the correct time zone for the system.
 
-![ubuntu_install_7](/assets/img/posts/ubuntu_install_7.webp)
+{% include article_image.html src='/assets/img/posts/ubuntu_install_7.webp' alt='Ubuntu installer time zone selection' width=996 height=842 %}
 
 7\. The account created at this step will be used as the **Local Admin** account for the system. The computer name is also entered here, following the standards required for the group.
 
-![ubuntu_install_8](/assets/img/posts/ubuntu_install_8.webp)
+{% include article_image.html src='/assets/img/posts/ubuntu_install_8.webp' alt='Ubuntu installer local administrator and computer name settings' width=624 height=516 %}
 
 8\. The system wil begin the install. Once completed, allow it to reboot.
 
-![ubuntu_install_9](/assets/img/posts/ubuntu_install_9.webp)
+{% include article_image.html src='/assets/img/posts/ubuntu_install_9.webp' alt='Ubuntu installation progress' width=624 height=470 %}
 
 9\. Do not upgrade or update the system at this point. Upgrading will change the system to version 24.04, which is not supported in this guide. The **Software Updater** will not add the necessary features needed. Choose **Remind Me Later** and **Don't Upgrade**.
 
-![ubuntu_install_10](/assets/img/posts/ubuntu_install_10.webp)
+{% include article_image.html src='/assets/img/posts/ubuntu_install_10.webp' alt='Ubuntu Software Updater release upgrade prompt' width=624 height=434 %}
 
 10\. Press **Skip** to continue the installation process.
 
-![ubuntu_install_11](/assets/img/posts/ubuntu_install_11.webp)
+{% include article_image.html src='/assets/img/posts/ubuntu_install_11.webp' alt='Ubuntu first-run account setup' width=622 height=495 %}
 
 11\. Click **Next** to skip the Livepath option, if the system does not have a Canonical license.
 
-![ubuntu_install_12](/assets/img/posts/ubuntu_install_12.webp)
+{% include article_image.html src='/assets/img/posts/ubuntu_install_12.webp' alt='Ubuntu first-run Livepatch options' width=623 height=494 %}
 
 12\. Click **No** and then **Next** to avoid sending information to Canonical. Click **Next** and leave location servic disabled. Next, click **Done**. 
 
-![ubuntu_install_13](/assets/img/posts/ubuntu_install_13.webp)
+{% include article_image.html src='/assets/img/posts/ubuntu_install_13.webp' alt='Ubuntu first-run privacy and location options' width=576 height=432 %}
 
 ### Prep System for Hardening
 13\. Click the **Show Applications** button on the lower left and type in **Terminal** to start the application.
 
-![ubuntu_hardening_1](/assets/img/posts/ubuntu_hardening_1.webp)
+{% include article_image.html src='/assets/img/posts/ubuntu_hardening_1.webp' alt='Opening the Ubuntu terminal from the applications menu' width=575 height=432 %}
 
 14\. Update the system files and upgrade any files.
     - **Note**: Most of the following commands will require **SUDO** mode
@@ -116,7 +119,7 @@ sudo apt update
 sudo apt upgrade
 ```
 
-![ubuntu_hardening_2](/assets/img/posts/ubuntu_hardening_2.webp)
+{% include article_image.html src='/assets/img/posts/ubuntu_hardening_2.webp' alt='Updating Ubuntu packages in the terminal' width=523 height=394 %}
 
 15\. Install the following packages needed for hardening, then remove old packages.
 
@@ -188,7 +191,7 @@ exit
     - Harden log files
 
 **Note**: 
-- "xccdf_mil.disa.stig_rule_SV-238363r654320_rule" cannot be configured without a Ubuntu subscription. However, this documentation activates and forces FIPS level encryption
+- "xccdf_mil.disa.stig_rule_SV-238363r654320_rule" cannot be configured without a Ubuntu subscription. This walkthrough does not verify FIPS-validated encryption
 - "xccdf_mil.disa.stig_rule_SV-238330r654165_rule" is configured by the script to 60 days as opposed to the DOD documentation of 180
 
 19\. Run the following fixes **as root** to manually resolve STIG rules based on the rules listed above
@@ -282,7 +285,7 @@ It contains the results of the security scan, states what changes need to be mad
 
 Some of the fixes required cannot be done via a simple shell command but instead need to be done manually. An example is below:
 
-![ubuntu_oscap_1](/assets/img/posts/ubuntu_oscap_1.webp)
+{% include article_image.html src='/assets/img/posts/ubuntu_oscap_1.webp' alt='OpenSCAP report showing a failed security rule and remediation details' width=624 height=407 %}
 
 The section **Remediation Description** explains what changes need to be made to the system to resolve the failure.
 

@@ -2,7 +2,8 @@
 layout: post
 title: A glance into my HomeLab
 date: 2025-02-25 12:00 +0000
-description: "A look into my HomeLab setup running Proxmox VE, VMWare vSphere, and various Docker containers for learning and personal use."
+last_modified_at: 2026-10-06
+description: "Building a personal lab with Proxmox, containers, private DNS, Tailscale remote access, and a game server with daily backups."
 categories: ["HomeLab", "Infrastructure"]
 tags: ["proxmox", "vmware", "docker", "homelab", "self-hosting"]
 ---

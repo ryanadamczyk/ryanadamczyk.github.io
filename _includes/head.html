@@ -1,29 +1,36 @@
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="{{ site.content_security_policy | escape }}">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   {% assign page_title = page.title | default: site.title %}
   {% assign meta_description = page.description | default: page.excerpt | default: site.description | strip_html | strip_newlines | truncate: 160 %}
   {% assign social_image = page.image | default: site.social_image | absolute_url %}
-  <title>{{ page_title }}{% if page_title != site.title %} | {{ site.title }}{% endif %}</title>
-  <meta name="description" content="{{ meta_description }}">
-  <meta name="author" content="{{ site.author.name }}">
-  <link rel="canonical" href="{{ page.url | absolute_url }}">
-  <meta property="og:title" content="{{ page_title }}">
-  <meta property="og:description" content="{{ meta_description }}">
-  <meta property="og:url" content="{{ page.url | absolute_url }}">
-  <meta property="og:site_name" content="{{ site.title }}">
-  <meta property="og:image" content="{{ social_image }}">
+  <title>{{ page_title | escape }}{% if page_title != site.title %} | {{ site.title | escape }}{% endif %}</title>
+  <meta name="description" content="{{ meta_description | escape }}">
+  <meta name="author" content="{{ site.author.name | escape }}">
+  <link rel="canonical" href="{{ page.url | absolute_url | escape }}">
+  <meta property="og:title" content="{{ page_title | escape }}">
+  <meta property="og:description" content="{{ meta_description | escape }}">
+  <meta property="og:url" content="{{ page.url | absolute_url | escape }}">
+  <meta property="og:site_name" content="{{ site.title | escape }}">
+  <meta property="og:image" content="{{ social_image | escape }}">
   <meta property="og:image:alt" content="Ryan Adamczyk — Implementation-minded systems professional">
+  {% unless page.image %}
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:type" content="image/jpeg">
+  {% endunless %}
   {% if page.date %}
   <meta property="og:type" content="article">
   {% else %}
   <meta property="og:type" content="website">
   {% endif %}
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="{{ page_title }}">
-  <meta name="twitter:description" content="{{ meta_description }}">
-  <meta name="twitter:image" content="{{ social_image }}">
+  <meta name="twitter:title" content="{{ page_title | escape }}">
+  <meta name="twitter:description" content="{{ meta_description | escape }}">
+  <meta name="twitter:image" content="{{ social_image | escape }}">
 
   <!-- CSS -->
   <link rel="stylesheet" href="{{ "/assets/main.css" | relative_url }}">
@@ -32,6 +39,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&display=swap">
   
   <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="{{ '/assets/img/favicons/favicon.svg' | relative_url }}">
   <link rel="icon" type="image/png" sizes="32x32" href="{{ "/assets/img/favicons/favicon-32x32.png" | relative_url }}">
   <link rel="icon" type="image/png" sizes="16x16" href="{{ "/assets/img/favicons/favicon-16x16.png" | relative_url }}">
   <link rel="apple-touch-icon" sizes="180x180" href="{{ "/assets/img/favicons/apple-touch-icon.png" | relative_url }}">
@@ -41,9 +49,6 @@
 
   <!-- Google Analytics-->
   {% if site.google_analytics and jekyll.environment == 'production' %}
-  <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}"></script>
-  <script src="{{ "/assets/js/analytics.js" | relative_url }}" defer data-measurement-id="{{ site.google_analytics }}"></script>
+  <script src="{{ "/assets/js/analytics.js" | relative_url }}" defer data-measurement-id="{{ site.google_analytics | escape }}"></script>
   {% endif %}
-
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; script-src 'self' https://www.googletagmanager.com; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://*.google-analytics.com;">
 </head>

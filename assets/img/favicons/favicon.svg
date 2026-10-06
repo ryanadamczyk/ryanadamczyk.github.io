@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128" role="img" aria-labelledby="title">
+  <title id="title">Ryan Adamczyk monogram</title>
+  <rect width="128" height="128" rx="22" fill="#1d1d1d"/>
+  <path d="M24 92V36h20c13 0 20 7 20 18 0 9-5 15-13 17l15 21H54L41 71h-5v21H24zm12-31h8c6 0 9-3 9-7s-3-7-9-7h-8v14zM70 92l17-56h13l17 56h-12l-3-12H85l-3 12H70zm18-23h11l-5-19-6 19z" fill="#fff"/>
+  <path d="M24 106h80" stroke="#5fae1e" stroke-width="6" stroke-linecap="round"/>
+</svg>

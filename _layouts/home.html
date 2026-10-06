@@ -4,8 +4,12 @@ layout: default
 
 <div class="intro-text">
   <p class="intro-eyebrow">Ryan Adamczyk</p>
-  <h1>Implementation-minded systems professional working at the intersection of infrastructure, automation, and business operations.</h1>
+  <h1>Reliable systems. Practical automation.</h1>
   <p class="intro-lede">I bring together hands-on systems administration, operational analysis, and technical documentation to make complex work more dependable.</p>
+  <div class="intro-actions">
+    <a class="intro-action intro-action--primary" href="{{ '/resume/' | relative_url }}">View my résumé</a>
+    <a class="intro-action" href="mailto:{{ site.author.email | escape }}">Get in touch</a>
+  </div>
 </div>
 
 <section class="featured-work" aria-labelledby="featured-work-title">
@@ -17,19 +21,25 @@ layout: default
     <a class="featured-work-card" href="{{ '/2025-02-25/homelab-setup' | relative_url }}">
       <span class="featured-work-kind">Infrastructure</span>
       <h3>Personal Infrastructure Homelab</h3>
-      <p>Hands-on work with Proxmox, Docker-based services, private DNS, remote access, and operational documentation.</p>
+      <p><strong>Problem:</strong> Learn infrastructure in a personal lab.</p>
+      <p><strong>Decisions:</strong> Use Proxmox, containers, private DNS, and Tailscale.</p>
+      <p><strong>Result:</strong> Self-hosted services and a game server with daily backups.</p>
       <span class="featured-work-link">Explore the homelab <span aria-hidden="true">→</span></span>
     </a>
     <a class="featured-work-card" href="{{ '/2025-05-29/Ubuntu-22-04-LTS-NIST-800-171-Configuration' | relative_url }}">
       <span class="featured-work-kind">Secure configuration</span>
       <h3>Ubuntu NIST 800-171 System Configuration</h3>
-      <p>An FAU-assigned Linux configuration project documenting a security-focused system-hardening workflow.</p>
+      <p><strong>Problem:</strong> Document an FAU Linux hardening assignment.</p>
+      <p><strong>Decisions:</strong> Apply STIG-based settings and use SCAP reports to identify gaps.</p>
+      <p><strong>Result:</strong> A documented configuration and validation workflow.</p>
       <span class="featured-work-link">Read the project <span aria-hidden="true">→</span></span>
     </a>
     <a class="featured-work-card" href="{{ '/2024-09-12/powerautomate-microsoft-form' | relative_url }}">
       <span class="featured-work-kind">Automation</span>
       <h3>Power Automate + SharePoint Workflow</h3>
-      <p>A capacity-aware Microsoft Forms workflow that combines automation, data storage, confirmations, and exception handling.</p>
+      <p><strong>Problem:</strong> Process sign-ups for time slots with different capacities.</p>
+      <p><strong>Decisions:</strong> Connect Forms, SharePoint, and Power Automate.</p>
+      <p><strong>Result:</strong> A documented flow for capacity checks and meeting invitations.</p>
       <span class="featured-work-link">See the workflow <span aria-hidden="true">→</span></span>
     </a>
   </div>
